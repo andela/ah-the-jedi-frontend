@@ -16,7 +16,8 @@ Create a community of like minded authors to foster inspiration and innovation b
 4. Run npm install on the terminal to install dependecies.
 5. Setup local development server.
 6. To start the application run npm start
-## Important note: `If you intend to contribute to this project, you need to install eslint and ensure linting is working in your editor.`
+## Important note: 
+If you intend to contribute to this project, you need to install eslint and ensure linting is working in your editor.
 
 ## Testing
 ### Unit tests - 
@@ -35,5 +36,5 @@ Contributions to this project are welcomed by all, If you need to contribute, fo
 Use npm to install packages. Do not install packages using yarn.
 
 ## Running the application
-Visit our Heroku link to try out this product https://ah-front-end-groot.herokuapp.com/
+Visit our Heroku link to try out this product: link
 In case of any errors ask the DevOps Engineer in the team
