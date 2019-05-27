@@ -33,7 +33,7 @@ Contributions to this project are welcomed by all, If you need to contribute, fo
 
 ## Dev notice:
 ### Package installation: 
-Use npm to install packages. Do not install packages using yarn.
+Use npm to install packages: ``npm install``
 
 ## Running the application
 Visit our Heroku link to try out this product: link
