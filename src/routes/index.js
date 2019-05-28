@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import Home from '../components/home/Home';
 import SignUpView from '../views/SignUpView';
 import LoginView from '../views/LoginView';
@@ -5,15 +6,22 @@ import Notfound from '../components/layout/Notfound';
 import AccountActivatedView from '../views/AccountActivateView';
 import EmailSentView from '../views/EmailSentView';
 import ResetPassword from '../components/reset_password';
+=======
+import Home from "../components/home/Home";
+import Login from "../components/auth/Login";
+import Notfound from "../components/layout/Notfound";
+import ResetPassword from "../components/reset_password";
+>>>>>>> feat(password-reset): implement password reset
 
 const routes = [
   {
-    path: '/',
+    path: "/",
     exact: true,
     component: Home,
-    id: 'home',
+    id: "home"
   },
   {
+<<<<<<< HEAD
     path: '/api/users/activate',
     component: AccountActivatedView,
     id: 'signup',
@@ -45,7 +53,21 @@ const routes = [
   {
     component: Notfound,
     id: 'notfound',
+=======
+    path: "/login",
+    component: Login,
+    id: "login"
   },
+  {
+    path: "/reset_password",
+    component: ResetPassword,
+    id: "reset_password"
+>>>>>>> feat(password-reset): implement password reset
+  },
+  {
+    component: Notfound,
+    id: "notfound"
+  }
 ];
 
 export default routes;
