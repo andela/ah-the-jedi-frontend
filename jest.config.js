@@ -9,6 +9,10 @@ module.exports = {
   // An array of directory names to be searched recursively up from the requiring module's location
   moduleDirectories: ['node_modules'],
 
+  moduleNameMapper: {
+    '^.+\\.(css|less|scss)$': 'identity-obj-proxy',
+  },
+
   // An array of file extensions your modules use
   moduleFileExtensions: ['js', 'json', 'jsx'],
 
@@ -31,5 +35,5 @@ module.exports = {
   testMatch: ['**/__tests__/**/*.js?(x)', '**/?(*.)+(spec|test).js?(x)'],
 
   // A list of paths to directories that Jest should use to search for files in
-  roots: ['<rootDir>/tests/']
+  roots: ['<rootDir>/tests/'],
 };
