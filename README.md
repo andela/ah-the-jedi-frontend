@@ -6,6 +6,9 @@ Create a community of like minded authors to foster inspiration and innovation b
 
 [![Build Status](https://travis-ci.org/andela/ah-the-jedi-frontend.svg?branch=develop)](https://travis-ci.org/andela/ah-the-jedi-frontend)
 
+## Deployment
+[Link](https://ah-the-jedi-frontend-staging.herokuapp.com/) to application host on heroku
+
 ## Technology Stack
 
 - React
