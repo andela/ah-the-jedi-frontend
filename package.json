@@ -41,6 +41,7 @@
     "font-awesome": "^4.7.0",
     "image-webpack-loader": "^4.6.0",
     "prop-types": "^15.7.2",
+    "css-loader": "^2.1.1",
     "react": "^16.8.6",
     "react-bootstrap": "^1.0.0-beta.9",
     "react-dom": "^16.8.6",
@@ -49,7 +50,9 @@
     "react-toastify": "^5.1.1",
     "redux": "^4.0.1",
     "redux-thunk": "^2.3.0",
-    "url-loader": "^1.1.2"
+    "url-loader": "^1.1.2",
+    "semantic-ui-react": "^0.87.1",
+    "style-loader": "^0.23.1"
   },
   "devDependencies": {
     "@babel/core": "^7.4.5",
