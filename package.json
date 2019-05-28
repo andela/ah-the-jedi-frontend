@@ -26,6 +26,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+<<<<<<< HEAD
     "@babel/runtime": "^7.4.5",
     "@fortawesome/fontawesome-svg-core": "^1.2.18",
     "@fortawesome/free-solid-svg-icons": "^5.8.2",
@@ -47,6 +48,8 @@
 >>>>>>> feat(password-reset): implement password reset
 =======
 >>>>>>> feat(password-reset): implement password reset
+=======
+>>>>>>> feat(password-reset): implement password reset
     "css-loader": "^2.1.1",
     "react": "^16.8.6",
     "react-bootstrap": "^1.0.0-beta.9",
@@ -58,7 +61,10 @@
     "redux-thunk": "^2.3.0",
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     "url-loader": "^1.1.2",
+=======
+>>>>>>> feat(password-reset): implement password reset
 =======
 >>>>>>> feat(password-reset): implement password reset
 =======

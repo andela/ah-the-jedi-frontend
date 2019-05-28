@@ -1,5 +1,6 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 import Home from '../components/home/Home';
 import SignUpView from '../views/SignUpView';
 import LoginView from '../views/LoginView';
@@ -10,11 +11,16 @@ import ResetPassword from '../components/reset_password';
 =======
 =======
 >>>>>>> feat(password-reset): implement password reset
+=======
+>>>>>>> feat(password-reset): implement password reset
 import Home from "../components/home/Home";
 import Login from "../components/auth/Login";
 import Notfound from "../components/layout/Notfound";
 import ResetPassword from "../components/reset_password";
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> feat(password-reset): implement password reset
+=======
 >>>>>>> feat(password-reset): implement password reset
 =======
 >>>>>>> feat(password-reset): implement password reset
@@ -25,6 +31,7 @@ const routes = [
     exact: true,
     component: Home,
     id: "home"
+<<<<<<< HEAD
 <<<<<<< HEAD
   },
   {
@@ -73,6 +80,21 @@ const routes = [
   },
   {
     component: Notfound,
+=======
+  },
+  {
+    path: "/login",
+    component: Login,
+    id: "login"
+  },
+  {
+    path: "/reset_password",
+    component: ResetPassword,
+    id: "reset_password"
+  },
+  {
+    component: Notfound,
+>>>>>>> feat(password-reset): implement password reset
 =======
   },
   {

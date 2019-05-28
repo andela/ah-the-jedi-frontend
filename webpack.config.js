@@ -15,6 +15,7 @@ module.exports = {
         exclude: /node_modules/,
         use: ['babel-loader'],
       },
+<<<<<<< HEAD
       {
         test: /\.scss$/,
         use: [
@@ -41,6 +42,9 @@ module.exports = {
         loader: 'url-loader?limit=8192',
         options: { name: '/images/[name].[ext]' },
       },
+=======
+      { test: /\.css$/, use: ["style-loader", "css-loader"] }
+>>>>>>> feat(password-reset): implement password reset
     ],
   },
   devServer: {
