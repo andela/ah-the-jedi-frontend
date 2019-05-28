@@ -15,6 +15,8 @@ module.exports = {
         exclude: /node_modules/,
         use: ['babel-loader'],
       },
+<<<<<<< HEAD
+<<<<<<< HEAD
       {
         test: /\.scss$/,
         use: [
@@ -32,11 +34,25 @@ module.exports = {
           },
         ],
       },
+<<<<<<< HEAD
+<<<<<<< HEAD
       {
         test: /\.(png|jpg|jpeg)$/,
         loader: 'url-loader?limit=8192',
         options: { name: '/images/[name].[ext]' },
       },
+=======
+      { test: /\.css$/, use: ["style-loader", "css-loader"] }
+>>>>>>> feat(password-reset): implement password reset
+=======
+      { test: /\.css$/, use: ["style-loader", "css-loader"] }
+>>>>>>> 6daf546... feat(password-reset): implement password reset
+=======
+      { test: /\.css$/, use: ["style-loader", "css-loader"] }
+>>>>>>> 1646809... feat(password-reset): implement password reset
+=======
+      { test: /\.css$/, use: ["style-loader", "css-loader"] }
+>>>>>>> 63de13b... feat(password-reset): implement password reset
     ],
   },
   devServer: {
