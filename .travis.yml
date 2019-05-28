@@ -7,6 +7,6 @@ cache:
 before-script:
   - npm install
 script:
-  - npm test
+  - npm run test:coveralls
 notifications:
   slack: andela:Bsl86DcFayVaPuGBjIWfrjI4

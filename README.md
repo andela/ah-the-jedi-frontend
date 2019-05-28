@@ -4,9 +4,10 @@ Create a community of like minded authors to foster inspiration and innovation b
 
 ## Badges
 
-[![Build Status](https://travis-ci.org/andela/ah-the-jedi-frontend.svg?branch=develop)](https://travis-ci.org/andela/ah-the-jedi-frontend)
+[![Build Status](https://travis-ci.org/andela/ah-the-jedi-frontend.svg?branch=develop)](https://travis-ci.org/andela/ah-the-jedi-frontend) [![Maintainability](https://api.codeclimate.com/v1/badges/48a5a2bb99aab393b44c/maintainability)](https://codeclimate.com/github/andela/ah-the-jedi-frontend/maintainability) [![Coverage Status](https://coveralls.io/repos/github/andela/ah-the-jedi-frontend/badge.svg)](https://coveralls.io/github/andela/ah-the-jedi-frontend)
 
 ## Deployment
+
 [Link](https://ah-the-jedi-frontend-staging.herokuapp.com/) to application host on heroku
 
 ## Technology Stack
@@ -25,7 +26,7 @@ Create a community of like minded authors to foster inspiration and innovation b
 3. cd into the root of the project directory.
 4. Run npm install on the terminal to install dependecies.
 5. Setup local development server.
-6. To start the application run npm start
+6. To start the application run `npm run start:dev`
 
 ## Important note:
 

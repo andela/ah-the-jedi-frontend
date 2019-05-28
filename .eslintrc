@@ -5,6 +5,7 @@
     "node": true
   },
   "extends": "airbnb",
+  "plugins": ["babel", "import", "jsx-a11y", "react", "prettier"],
   "rules": {
     "react/prefer-stateless-function": 0,
     "react/jsx-filename-extension": [
