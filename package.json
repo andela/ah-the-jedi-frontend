@@ -11,7 +11,10 @@
     "test:watch": "jest --watch",
     "test:coverage": "jest --collectCoverage",
     "test:coveralls": "jest --coverage --coverageReporters=text-lcov | coveralls",
-    "heroku-postbuild": "npm run build"
+    "heroku-postbuild": "npm run build",
+    "lint": "eslint --debug src/",
+    "lint:write": "eslint --debug src/ --fix",
+    "prettier": "prettier --write src/**/*.js"
   },
   "repository": {
     "type": "git",
@@ -23,7 +26,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "coveralls": "^3.0.3",
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.13.2",
     "express": "^4.17.1",
@@ -46,10 +48,14 @@
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "css-loader": "^2.1.1",
+    "coveralls": "^3.0.3",
     "eslint": "^4.19.1",
     "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-jest-enzyme": "^7.0.2",
+    "eslint-plugin-babel": "^5.3.0",
     "eslint-plugin-import": "^2.17.3",
     "eslint-plugin-jsx-a11y": "^6.2.1",
+    "eslint-plugin-prettier": "^3.1.0",
     "eslint-plugin-react": "^7.13.0",
     "html-webpack-plugin": "^3.2.0",
     "identity-obj-proxy": "^3.0.0",
@@ -60,6 +66,7 @@
     "redux-logger": "^3.0.6",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
+    "prettier": "^1.17.1",
     "webpack": "^4.32.2",
     "webpack-cli": "^3.3.2",
     "webpack-dev-server": "^3.4.1"
