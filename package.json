@@ -28,14 +28,20 @@
   "dependencies": {
     "@babel/runtime": "^7.4.5",
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 1ccf9bc... feat(login): implement user login
     "@fortawesome/fontawesome-svg-core": "^1.2.18",
     "@fortawesome/free-solid-svg-icons": "^5.8.2",
     "@fortawesome/react-fontawesome": "^0.1.4",
     "axios": "^0.18.0",
     "babel-polyfill": "^6.26.0",
+<<<<<<< HEAD
 =======
     "axios": "^0.18.0",
 >>>>>>> 1c47b90... feat(signup): Users should be able to signup
+=======
+>>>>>>> 1ccf9bc... feat(login): implement user login
     "bootstrap": "^4.3.1",
     "coveralls": "^3.0.3",
     "enzyme": "^3.9.0",
@@ -43,11 +49,15 @@
     "express": "^4.17.1",
     "file-loader": "^3.0.1",
 <<<<<<< HEAD
+<<<<<<< HEAD
     "font-awesome": "^4.7.0",
     "image-webpack-loader": "^4.6.0",
     "prop-types": "^15.7.2",
     "css-loader": "^2.1.1",
 =======
+=======
+    "font-awesome": "^4.7.0",
+>>>>>>> 1ccf9bc... feat(login): implement user login
     "image-webpack-loader": "^4.6.0",
     "prop-types": "^15.7.2",
 >>>>>>> 1c47b90... feat(signup): Users should be able to signup
@@ -57,6 +67,7 @@
     "react-redux": "^7.0.3",
     "react-router-dom": "^5.0.0",
 <<<<<<< HEAD
+<<<<<<< HEAD
     "react-toastify": "^5.1.1",
     "redux": "^4.0.1",
     "redux-thunk": "^2.3.0",
@@ -65,9 +76,11 @@
     "style-loader": "^0.23.1"
 =======
     "react-toastify": "^5.2.0",
+=======
+    "react-toastify": "^5.1.1",
+>>>>>>> 1ccf9bc... feat(login): implement user login
     "redux": "^4.0.1",
     "redux-thunk": "^2.3.0",
-    "semantic-ui-react": "^0.87.1",
     "url-loader": "^1.1.2"
 >>>>>>> 1c47b90... feat(signup): Users should be able to signup
   },
