@@ -1,23 +1,23 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { Button, Form } from "semantic-ui-react";
-import { resetPassword } from "../../redux/actions/resetPasswordAction";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { Button, Form } from 'semantic-ui-react';
+import { resetPassword } from '../../redux/actions/resetPasswordAction';
 
-require("../../assets/styles/reset_password.css");
+require('../../assets/styles/reset_password.css');
 
 class ResetPassword extends Component {
   state = {
-    email: ""
+    email: '',
   };
 
-  onChange = e => {
+  onChange = (e) => {
     const {
-      target: { name, value }
+      target: { name, value },
     } = e;
     this.setState({ [name]: value });
   };
 
-  onSubmit = e => {
+  onSubmit = (e) => {
     e.preventDefault();
     // console.log(this.props)
     const { resetPassword } = this.props;
@@ -27,9 +27,9 @@ class ResetPassword extends Component {
   render() {
     const { ResetPassword } = this.props;
     if (ResetPassword.message) {
-      if (ResetPassword.message.includes("404")) {
-        console.log("test here", ResetPassword.message);
-        document.getElementById("error").innerHTML = "Account with this email is not found.";
+      if (ResetPassword.message.includes('404')) {
+        console.log('test here', ResetPassword.message);
+        document.getElementById('error').innerHTML =          'Account with this email is not found.';
       } else {
         return (
           <div>
@@ -60,7 +60,7 @@ class ResetPassword extends Component {
 }
 
 const mapDispatchToProps = () => ({
-  resetPassword
+  resetPassword,
 });
 
 const mapStateToProps = state => ({
@@ -70,5 +70,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps()
+  mapDispatchToProps(),
 )(ResetPassword);
