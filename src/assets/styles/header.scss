@@ -1,0 +1,12 @@
+@import './variables.scss';
+.navbar-light {
+  background-color: white !important;
+  box-shadow: $box-shadow;
+
+  .logo {
+    width: 3%;
+    height: 3%;
+    margin-left: 5px;
+    margin-right: 15px;
+  }
+}
