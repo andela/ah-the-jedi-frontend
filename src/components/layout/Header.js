@@ -48,10 +48,10 @@ class Header extends Component {
 }
 
 const mapStateToProps = state => ({
-  login: state.LoginReducer
+  login: state.LoginReducer,
 });
 
 export default connect(
   mapStateToProps,
-  null
+  null,
 )(Header);
