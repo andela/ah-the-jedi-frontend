@@ -9,12 +9,23 @@ export default class Header extends Component {
         <NavLink to="/">
           <Menu.Item header>Authors Haven</Menu.Item>
         </NavLink>
-        <NavLink to="/">
-          <Menu.Item name="Home" />
-        </NavLink>
-        <NavLink to="/login">
-          <Menu.Item name="login" />
-        </NavLink>
+        <Menu.Menu position="right">
+          <NavLink to="/">
+            <Menu.Item name="Home" />
+          </NavLink>
+          {!localStorage.getItem('token') ? (
+            <NavLink to="/login">
+              <Menu.Item name="login" />
+            </NavLink>
+          ) : (
+            <NavLink to="/">
+              <Menu.Item name="logout" />
+            </NavLink>
+          )}
+          {/* <NavLink to="/login">
+            <Menu.Item name="login" />
+          </NavLink> */}
+        </Menu.Menu>
       </Menu>
     );
   }
