@@ -1,20 +1,30 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import LoggedInLinks from './LoggedInLinks';
 import LoggedOutLinks from './LoggedOutLinks';
+import { isLoggedIn } from '../../helpers';
 import { NavLink } from 'react-router-dom';
 import '../../assets/styles/header.scss';
 
-/*
-* Header Component
-*
-*@return {js} to display header
-*/
 class Header extends Component {
   render() {
+    const { login } = this.props;
+    /*
+     *check whether user is logged in and displays appropriate links
+     */
+    const links =
+      login.isAuthentincated || isLoggedIn() ? (
+        <LoggedInLinks />
+      ) : (
+        <LoggedOutLinks />
+      );
     return (
-      <nav sticky="top" className="navbar navbar-expand-lg navbar-light">
-        {/* <img src={ahLogo} alt="logo" className="logo" /> */}
-        <NavLink className="navbar-brand" to="/">
+      <nav
+        sticky="top"
+        className="navbar navbar-expand-lg navbar-light"
+        data-set="nav-bar-test"
+      >
+        <NavLink className="navbar-brand" to="/" data-set="nav-bar-brand-test">
           Authors Haven
         </NavLink>
         <button
@@ -30,9 +40,7 @@ class Header extends Component {
         </button>
 
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul className="navbar-nav ml-auto">
-            <LoggedOutLinks />
-          </ul>
+          <ul className="navbar-nav ml-auto">{links}</ul>
         </div>
       </nav>
     );
@@ -40,10 +48,10 @@ class Header extends Component {
 }
 
 const mapStateToProps = state => ({
-  login: state.LoginReducer,
+  login: state.LoginReducer
 });
 
 export default connect(
   mapStateToProps,
-  null,
+  null
 )(Header);
