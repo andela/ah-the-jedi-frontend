@@ -1,8 +1,80 @@
-.login h2 {
-  color: blue;
-  font-size: 18px;
-}
+.sign-in-page {
+  h1 {
+    text-align: center;
+    margin-top: 2%;
+  }
 
-#email_error {
-  display: none;
+  .hidden {
+    display: none;
+  }
+
+  .show {
+    display: block;
+  }
+
+  .signin-form {
+    display: inline-block;
+    -moz-box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.5);
+    -webkit-box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.5);
+    box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.5);
+    padding: 70px 90px 90px 90px;
+    width: 40%;
+    height: 75%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    margin-top: 2%;
+    border-radius: 5px;
+  }
+
+  .separator {
+    display: flex;
+    align-items: center;
+    &-line {
+      height: 2px;
+      background: #cecece;
+      width: 48%;
+    }
+    &-text {
+      background: transparent;
+      border-radius: 50%;
+      margin: 0 5px 0 5px;
+      border: 2px solid #cecece;
+      padding: 1%;
+    }
+    margin-bottom: 4%;
+    margin-top: 4%;
+  }
+
+  .social {
+    display: flex;
+    justify-content: center;
+    &-facebook {
+      color: white;
+      background-color: #3b5998;
+      margin-right: 10%;
+    }
+    &-google {
+      color: white;
+      background-color: #db4437;
+    }
+  }
+
+  .submit-btn {
+    margin-bottom: 5%;
+    background: #3472d6;
+    color: white;
+    padding: 4%;
+    margin-top: 5%;
+  }
+
+  .login {
+    display: flex;
+    align-items: center;
+    margin-top: 10%;
+    &-text {
+      margin: -14px 5px 0 5px;
+    }
+  }
 }

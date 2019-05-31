@@ -1,67 +1,24 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { Button, Form, Card, Grid, Image } from 'semantic-ui-react';
-import { loginUser } from '../../redux/actions/LoginActions';
+import { Button, Form, Icon } from 'semantic-ui-react';
 import '../../assets/styles/login.scss';
-import { toast } from 'react-toastify';
+import { Link } from 'react-router-dom';
 
-class Login extends Component {
-  state = {
-    email: '',
-    password: '',
-    isLoading: false
-  };
-
-  onChange = e => {
-    this.setState({
-      [e.target.id]: e.target.value
-    });
-  };
-
-  onSubmit = event => {
-    console.log(this.state);
-    // console.log(this.props);
-    event.preventDefault();
-    const { loginUser, history } = this.props;
-    loginUser(
-      {
-        user: {
-          email: this.state.email,
-          password: this.state.password
-        }
-      },
-      history
-    );
-  };
-
-  componentWillReceiveProps(nextProps) {
-    // console.log('next', nextProps);
-    const { errors } = nextProps.error;
-    if (errors && errors.error) {
-      console.log(errors.error);
-
-      toast.error(errors.error[0], {
-        position: toast.POSITION.TOP_CENTER,
-        autoClose: 3000,
-        hideProgressBar: true,
-        pauseOnHover: true
-      });
-    }
-  }
-
+class LoginForm extends Component {
   render() {
+    const { onSubmit, onChange, email, password } = this.props;
     return (
-      <Grid>
-        <Grid.Column width={6} />
-        <Grid.Column width={4}>
-          <Form onSubmit={this.onSubmit}>
+      <div className="sign-in-page">
+        <h1>Authors Haven</h1>
+        <div className="signin-form">
+          <h1>Login</h1>
+          <Form onSubmit={onSubmit}>
             <Form.Field>
               <label id="test">Email</label>
               <input
                 placeholder="email"
                 id="email"
                 type="email"
-                onChange={this.onChange}
+                onChange={onChange}
                 required
               />
             </Form.Field>
@@ -70,39 +27,54 @@ class Login extends Component {
               <input
                 placeholder="password"
                 id="password"
-                onChange={this.onChange}
+                onChange={onChange}
                 type="Password"
                 required
               />
             </Form.Field>
             <Button
+              fluid
+              className="submit-btn"
               disabled={
-                !this.state.email.match(
-                  /^[a-zA-z0-9_.]+@[a-zA-z0-9-]+\.[a-z]+$/
-                ) || !this.state.password.match(/^[a-zA-Z0-9]{8,}$/)
+                !email.match(/^[a-zA-z0-9_.]+@[a-zA-z0-9-]+\.[a-z]+$/) ||
+                !password.match(/^[a-zA-Z0-9]{8,}$/)
               }
               type="submit"
             >
               Login
             </Button>
           </Form>
-        </Grid.Column>
-        <Grid.Column width={6} />
-      </Grid>
+          <div>
+            <div className="separator">
+              <div className="separator-line" />
+              <p className="separator-text">OR</p>
+              <div className="separator-line" />
+            </div>
+            <div className="social">
+              <Icon
+                name="facebook f"
+                size="large"
+                circular
+                className="social-facebook"
+              />
+              <Icon
+                name="google"
+                size="large"
+                circular
+                className="social-google"
+              />
+            </div>
+            <div className="login">
+              <p>No account?</p>
+              <Link className="login-text" to="/signup">
+                Signup here.
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
     );
   }
 }
 
-const mapDispatchToProps = () => ({
-  loginUser
-});
-
-const mapStateToProps = state => ({
-  login: state.loginUser,
-  error: state.LoginReducer.error
-});
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps()
-)(Login);
+export default LoginForm;

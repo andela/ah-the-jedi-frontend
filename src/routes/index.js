@@ -1,5 +1,5 @@
 import Home from '../components/home/Home';
-import Login from '../components/auth/Login';
+import LoginView from '../views/LoginView';
 import Notfound from '../components/layout/Notfound';
 
 const routes = [
@@ -7,17 +7,17 @@ const routes = [
     path: '/',
     exact: true,
     component: Home,
-    id: 'home',
+    id: 'home'
   },
   {
     path: '/login',
-    component: Login,
-    id: 'login',
+    component: LoginView,
+    id: 'login'
   },
   {
     component: Notfound,
-    id: 'notfound',
-  },
+    id: 'notfound'
+  }
 ];
 
 export default routes;

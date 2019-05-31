@@ -1,7 +1,7 @@
 import { LOGIN_USER } from '../constants';
 
 const initialState = {
-  isLoading: false,
+  isAuthentincated: false,
   data: {},
   error: {}
 };
@@ -9,19 +9,22 @@ const initialState = {
 export default (state = initialState, action) => {
   switch (action.type) {
     case `${LOGIN_USER}_SUCCESS`:
-      //   console.log('this is an action' + action.response.user.token);
       const token = action.response.user.token;
       localStorage.setItem('token', `Bearer ${token}`);
 
-      return { ...state, isLoading: false, data: action.response };
+      return { ...state, isAuthentincated: true, data: action.response };
 
     case `${LOGIN_USER}_FAILURE`:
-      console.log('the error' + action.error.response);
       return {
         ...state,
-        isLoading: false,
+        isAuthentincated: false,
         error: action.error.response.data,
         isError: true
+      };
+    case `${LOGIN_USER}_LOGOUT`:
+      return {
+        ...state,
+        isAuthentincated: false
       };
 
     default:

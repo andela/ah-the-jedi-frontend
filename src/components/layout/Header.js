@@ -1,9 +1,26 @@
 import React, { Component } from 'react';
 import { Menu } from 'semantic-ui-react';
 import { NavLink } from 'react-router-dom';
+import LoggedInLinks from './LoggedInLinks';
+import LoggedOutLinks from './LoggedOutLinks';
+import { isLoggedIn } from '../../helpers';
+import { connect } from 'react-redux';
 
-export default class Header extends Component {
+class Header extends Component {
+  componentWillMount() {
+    const links = login.isAuthentincated ? (
+      <LoggedInLinks />
+    ) : (
+      <LoggedOutLinks />
+    );
+  }
   render() {
+    const { login } = this.props;
+    const links = login.isAuthentincated ? (
+      <LoggedInLinks />
+    ) : (
+      <LoggedOutLinks />
+    );
     return (
       <Menu>
         <NavLink to="/">
@@ -13,20 +30,18 @@ export default class Header extends Component {
           <NavLink to="/">
             <Menu.Item name="Home" />
           </NavLink>
-          {!localStorage.getItem('token') ? (
-            <NavLink to="/login">
-              <Menu.Item name="login" />
-            </NavLink>
-          ) : (
-            <NavLink to="/">
-              <Menu.Item name="logout" />
-            </NavLink>
-          )}
-          {/* <NavLink to="/login">
-            <Menu.Item name="login" />
-          </NavLink> */}
+          {links}
         </Menu.Menu>
       </Menu>
     );
   }
 }
+
+const mapStateToProps = state => ({
+  login: state.LoginReducer
+});
+
+export default connect(
+  mapStateToProps,
+  null
+)(Header);
