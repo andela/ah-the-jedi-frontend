@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start:dev": "webpack-dev-server --mode development --open --hot",
+    "start:dev": "webpack-dev-server --mode development --open --https --hot",
     "build": "webpack --mode production",
     "serve": "node server.js",
     "test": "jest",
@@ -48,6 +48,9 @@
     "react-bootstrap": "^1.0.0-beta.9",
     "react-dom": "^16.8.6",
     "react-inline-editable-field": "^1.0.6",
+    "react-facebook-login": "^4.1.1",
+    "react-google-login": "^5.0.4",
+    "react-icons": "^3.7.0",
     "react-redux": "^7.0.3",
     "react-router-dom": "^5.0.0",
     "react-toastify": "^5.2.0",

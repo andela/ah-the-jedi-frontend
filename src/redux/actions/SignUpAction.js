@@ -34,3 +34,8 @@ export const verificationFailure = error => ({
   type: `${SIGNUP_USER}_SEND_VERIFICATION_FAILURE`,
   error,
 });
+
+export const socialAction = data => ({
+  type: `${SIGNUP_USER}_SOCIAL`,
+  data,
+});

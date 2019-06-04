@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { signUpUser } from '../redux/actions/SignUpAction';
 import SignupForm from '../components/auth/Signup';
+import { UserSocialLogin } from '../redux/actions/loginActions';
+import SocialLogin from '../components/auth/Social';
 
 /*
  * SignUpView Component

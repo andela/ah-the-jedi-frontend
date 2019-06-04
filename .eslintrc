@@ -9,10 +9,6 @@
     "sourceType": "module",
     "allowImportExportEverywhere": true
   },
-  "parserOptions": {
-    "sourceType": "module",
-    "allowImportExportEverywhere": true
-  },
   "extends": "airbnb",
   "plugins": ["babel", "import", "jsx-a11y", "react", "prettier"],
   "rules": {
@@ -30,6 +26,15 @@
       {
         "extensions": [".js", ".jsx"]
       }
-    ]
+    ],
+    "react/button-has-type": [
+      0,
+      {
+        "button": false,
+        "submit": false,
+        "reset": false
+      }
+    ],
+    "arrow-parens": 0
   }
 }

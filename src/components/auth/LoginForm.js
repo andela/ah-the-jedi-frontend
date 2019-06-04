@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Button, Form, Spinner } from 'react-bootstrap';
+import SocialLogin from './Social';
 import '../../assets/styles/login.scss';
 
 class LoginForm extends Component {
@@ -74,8 +75,8 @@ class LoginForm extends Component {
               <p className="separator-text">OR</p>
               <div className="separator-line" />
             </div>
-            <div className="social">
-              <p>Social login icons here</p>
+            <div className="rounded-social-buttons">
+              <SocialLogin />
             </div>
             <div className="login">
               <p>No account?</p>

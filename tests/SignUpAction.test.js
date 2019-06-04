@@ -1,13 +1,14 @@
 import thunk from 'redux-thunk';
+import moxios from 'moxios';
+import configureMockStore from 'redux-mock-store';
+import instance from '../axiosconfig';
+import { SIGNUP_USER, BASE_URL } from '../src/redux/constants';
 import {
   verificationSent,
   verificationFailure,
   signUpUser,
+  socialAction,
 } from '../src/redux/actions/SignUpAction';
-import { SIGNUP_USER, BASE_URL } from '../src/redux/constants';
-import configureMockStore from 'redux-mock-store';
-import moxios from 'moxios';
-import instance from '../axiosconfig';
 
 describe('unit tests for signup actions', () => {
   const middlewares = [thunk];
@@ -74,6 +75,21 @@ describe('unit tests for signup actions', () => {
     const expectedAction = verificationSent(data);
     moxios.stubRequest(`${BASE_URL}/users/`, { status: 201, response: data });
     await store.dispatch(signUpUser(data));
+    expect(store.getActions()).toContainEqual(expectedAction);
+    done();
+  });
+
+  it('dispatches SIGNUP_USER_SOCIAL on social login/signup', async done => {
+    const res = {
+      email: 'kathiekim95@gmail.com',
+      username: 'kathiekim',
+      token:
+        'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo2LCJ1c2VybmFtZSI6ImthdGhpZWtpbTk1QGdtYWlsLmNvbSIsImV4cCI6MTU1OTg2MDM1NywiZW1haWwiOiJrYXRoaWVraW05NUBnbWFpbC5jb20ifQ.taJlapQocvE86WnZNyJhTKwgkzN_ldl4dgM05MWPkkw',
+    };
+
+    const expectedAction = socialAction(res);
+    moxios.stubRequest(`${BASE_URL}/users/social/login`, { status: 200, response: res });
+    await store.dispatch(socialAction(res));
     expect(store.getActions()).toContainEqual(expectedAction);
     done();
   });
