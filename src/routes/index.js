@@ -1,8 +1,8 @@
 import Home from '../components/home/Home';
 import SignUpView from '../views/SignUpView';
+import LoginView from '../views/LoginView';
 import Notfound from '../components/layout/Notfound';
 import AccountActivatedView from '../views/AccountActivateView';
-import Login from '../components/auth/Login';
 import EmailSentView from '../views/EmailSentView';
 
 const routes = [
@@ -19,7 +19,7 @@ const routes = [
   },
   {
     path: '/login',
-    component: Login,
+    component: LoginView,
     id: 'login',
   },
   {

@@ -1,4 +1,68 @@
-.login h2 {
-  color: blue;
-  font-size: 18px;
+@import './variables.scss';
+.sign-in-page {
+  h1 {
+    text-align: center;
+    margin-top: 2%;
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  .show {
+    display: block;
+  }
+  @media (min-width: 992px) {
+    .signin-form {
+      display: inline-block;
+      box-shadow: $box-shadow;
+      padding: 70px 80px 40px 80px;
+      width: 40%;
+      height: 75%;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      flex-direction: column;
+      margin-top: 1%;
+      border-radius: 5px;
+    }
+  }
+
+  .separator {
+    display: flex;
+    align-items: center;
+    &-line {
+      height: 2px;
+      background: $background;
+      width: 48%;
+    }
+    &-text {
+      background: transparent;
+      border-radius: 50%;
+      margin: 0 5px 0 5px;
+      border: 2px solid $background;
+      padding: 1%;
+    }
+    margin-bottom: 4%;
+    margin-top: 5%;
+  }
+
+  .social {
+    display: flex;
+    justify-content: center;
+  }
+
+  .submit-btn {
+    background: $blue !important;
+    margin-top: 30px;
+  }
+
+  .login {
+    display: flex;
+    align-items: center;
+    margin-top: 10%;
+    &-text {
+      margin: -14px 5px 0 5px;
+    }
+  }
 }
