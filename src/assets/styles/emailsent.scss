@@ -1,0 +1,38 @@
+.emailsent-page {
+  h1 {
+    text-align: center;
+    margin-top: 2%;
+  }
+
+  .emailsent-view {
+    display: flex;
+    align-items: center;
+    display: inline-block;
+    -moz-box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.5);
+    -webkit-box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.5);
+    box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.5);
+    padding: 50px 90px 50px 90px;
+    width: 40%;
+    height: 75%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    margin-top: 2%;
+    border-radius: 5px;
+  }
+
+  .footer {
+    display: flex;
+    justify-content: center;
+    &-home {
+      font-size: 20px;
+      margin-right: 15px;
+      margin-top: 1%;
+    }
+    &-login {
+      font-size: 20px;
+      margin-top: 1%;
+    }
+  }
+}

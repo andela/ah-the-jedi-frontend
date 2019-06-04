@@ -4,6 +4,10 @@
     "browser": true,
     "node": true
   },
+  "parserOptions": {
+    "sourceType": "module",
+    "allowImportExportEverywhere": true
+  },
   "extends": "airbnb",
   "plugins": ["babel", "import", "jsx-a11y", "react", "prettier"],
   "rules": {
