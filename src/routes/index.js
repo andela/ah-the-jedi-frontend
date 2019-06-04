@@ -1,4 +1,4 @@
-import Home from '../components/home/Home';
+import HomeView from '../components/home/Home';
 import SignUpView from '../views/SignUpView';
 import LoginView from '../views/LoginView';
 import Notfound from '../components/layout/Notfound';
@@ -6,12 +6,13 @@ import AccountActivatedView from '../views/AccountActivateView';
 import EmailSentView from '../views/EmailSentView';
 import ResetPasswordView from '../views/ResetPasswordView';
 import PasswordConfirmView from '../views/PasswordConfirmView';
+import ProfileView from '../components/profiles/Profile';
 
 const routes = [
   {
     path: '/',
     exact: true,
-    component: Home,
+    component: HomeView,
     id: 'home',
   },
   {
@@ -45,8 +46,13 @@ const routes = [
     id: 'password_confirm',
   },
   {
+    path: '/@:username',
+    component: ProfileView,
+    id: 'profile',
+  },
+  {
     component: Notfound,
-    id: "notfound"
+    id: 'notfound',
   },
 ];
 

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 import LoggedInLinks from './LoggedInLinks';
 import LoggedOutLinks from './LoggedOutLinks';
 import { isLoggedIn } from '../../helpers';
-import { NavLink } from 'react-router-dom';
 import '../../assets/styles/header.scss';
 
 class Header extends Component {
@@ -12,18 +12,9 @@ class Header extends Component {
     /*
      *check whether user is logged in and displays appropriate links
      */
-    const links =
-      login.isAuthentincated || isLoggedIn() ? (
-        <LoggedInLinks />
-      ) : (
-        <LoggedOutLinks />
-      );
+    const links = login.isAuthentincated || isLoggedIn() ? <LoggedInLinks /> : <LoggedOutLinks />;
     return (
-      <nav
-        sticky="top"
-        className="navbar navbar-expand-lg navbar-light"
-        data-set="nav-bar-test"
-      >
+      <nav sticky="top" className="navbar navbar-expand-lg navbar-light" data-set="nav-bar-test">
         <NavLink className="navbar-brand" to="/" data-set="nav-bar-brand-test">
           Authors Haven
         </NavLink>
@@ -48,10 +39,10 @@ class Header extends Component {
 }
 
 const mapStateToProps = state => ({
-  login: state.LoginReducer
+  login: state.LoginReducer,
 });
 
 export default connect(
   mapStateToProps,
-  null
+  null,
 )(Header);

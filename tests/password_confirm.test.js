@@ -2,7 +2,6 @@ import expect from 'expect';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import moxios from 'moxios';
-import reducers from '../src/redux/reducers';
 import { PASSWORD_CONFIRM } from '../src/redux/constants';
 import { passwordConfirm } from '../src/redux/actions/passwordConfirmAction';
 
@@ -58,8 +57,7 @@ describe('test for password confirm action', () => {
       .then(() => {
         expect(store.getActions()[1].type).toEqual(expectedActions.type);
       })
-      .catch(() => {
-      });
+      .catch(() => {});
   });
 
   it('tests for unsuccessful confirm password reset action', () => {
@@ -78,55 +76,6 @@ describe('test for password confirm action', () => {
 
     return store.dispatch(passwordConfirm()).catch(() => {
       expect(error.message).toEqual(expectedActions.error);
-    });
-  });
-});
-
-describe('password confirm successful reducers', () => {
-  it('tests for initial state', () => {
-    const state = reducers(undefined, {});
-    expect(state).toEqual({
-      reset_password: { isLoading: false, message: '', error: '' },
-      password_confirm: { isLoading: false, message: '', error: '' },
-    });
-  });
-
-  it('should handle reset password confirm post request start', () => {
-    const startAction = {
-      type: PASSWORD_CONFIRM,
-    };
-    const state = reducers(undefined, startAction);
-    // it's empty on purpose because it's just starting to fetch request
-    expect(state).toEqual({
-      reset_password: { isLoading: false, message: '', error: '' },
-      password_confirm: { isLoading: true, message: '', error: '' },
-    });
-  });
-
-  it('should handle reset password confirm post request success', () => {
-    const successAction = {
-      type: `${PASSWORD_CONFIRM}_SUCCESS`,
-    };
-    const state = reducers(undefined, successAction);
-    expect(state).toEqual({
-      reset_password: { isLoading: false, message: '', error: '' },
-      password_confirm: { isLoading: false, message: undefined, error: '' },
-    });
-  });
-
-  it('should handle reset password confirm post request failure', () => {
-    const failureAction = {
-      type: `${PASSWORD_CONFIRM}_FAILURE`,
-    };
-    const state = reducers(undefined, failureAction);
-    expect(state).toEqual({
-      reset_password: { isLoading: false, message: '', error: '' },
-      password_confirm: {
-        isLoading: false,
-        message: undefined,
-        error: '',
-        isError: undefined,
-      },
     });
   });
 });

@@ -16,7 +16,7 @@ export const loginUser = (data, history) => dispatch => {
       dispatch(loginSuccess(response.data));
 
       successToast(`Welcome ${response.data.user.username}`);
-      history.push('/');
+      history.push(`@${response.data.user.username}`);
     })
     .catch(error => {
       dispatch(loginFailure(error));
