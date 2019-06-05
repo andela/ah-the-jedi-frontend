@@ -1,41 +1,20 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 import Home from '../components/home/Home';
 import SignUpView from '../views/SignUpView';
 import LoginView from '../views/LoginView';
 import Notfound from '../components/layout/Notfound';
 import AccountActivatedView from '../views/AccountActivateView';
 import EmailSentView from '../views/EmailSentView';
-import ResetPassword from '../components/reset_password';
-=======
-=======
->>>>>>> feat(password-reset): implement password reset
-=======
->>>>>>> feat(password-reset): implement password reset
-import Home from "../components/home/Home";
-import Login from "../components/auth/Login";
-import Notfound from "../components/layout/Notfound";
-import ResetPassword from "../components/reset_password";
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> feat(password-reset): implement password reset
-=======
->>>>>>> feat(password-reset): implement password reset
-=======
->>>>>>> feat(password-reset): implement password reset
+import ResetPasswordView from '../views/ResetPasswordView';
+import PasswordConfirmView from '../views/PasswordConfirmView';
 
 const routes = [
   {
-    path: "/",
+    path: '/',
     exact: true,
     component: Home,
-    id: "home"
-<<<<<<< HEAD
-<<<<<<< HEAD
+    id: 'home',
   },
   {
-<<<<<<< HEAD
     path: '/api/users/activate',
     component: AccountActivatedView,
     id: 'signup',
@@ -57,61 +36,18 @@ const routes = [
   },
   {
     path: '/reset_password',
-    component: ResetPassword,
+    component: ResetPasswordView,
     id: 'reset_password',
   },
   {
-    component: Notfound,
-    id: 'notfound',
+    path: '/password_confirm',
+    component: PasswordConfirmView,
+    id: 'password_confirm',
   },
   {
     component: Notfound,
     id: 'notfound',
-=======
-    path: "/login",
-    component: Login,
-    id: "login"
   },
-  {
-    path: "/reset_password",
-    component: ResetPassword,
-    id: "reset_password"
->>>>>>> feat(password-reset): implement password reset
-  },
-  {
-    component: Notfound,
-=======
-  },
-  {
-    path: "/login",
-    component: Login,
-    id: "login"
-  },
-  {
-    path: "/reset_password",
-    component: ResetPassword,
-    id: "reset_password"
-  },
-  {
-    component: Notfound,
->>>>>>> feat(password-reset): implement password reset
-=======
-  },
-  {
-    path: "/login",
-    component: Login,
-    id: "login"
-  },
-  {
-    path: "/reset_password",
-    component: ResetPassword,
-    id: "reset_password"
-  },
-  {
-    component: Notfound,
->>>>>>> feat(password-reset): implement password reset
-    id: "notfound"
-  }
 ];
 
 export default routes;
