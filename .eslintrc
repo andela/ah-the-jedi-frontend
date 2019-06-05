@@ -2,7 +2,12 @@
   "parser": "babel-eslint",
   "env": {
     "browser": true,
-    "node": true
+    "node": true,
+    "jest": true
+  },
+  "parserOptions": {
+    "sourceType": "module",
+    "allowImportExportEverywhere": true
   },
   "parserOptions": {
     "sourceType": "module",
@@ -12,6 +17,11 @@
   "plugins": ["babel", "import", "jsx-a11y", "react", "prettier"],
   "rules": {
     "react/prefer-stateless-function": 0,
+    "jsx-a11y/label-has-associated-control": [ "error", {
+      "required": {
+        "some": [ "nesting", "id"  ]
+      }
+    }],
     "react/jsx-filename-extension": [
       1,
       {

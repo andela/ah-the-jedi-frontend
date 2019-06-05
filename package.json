@@ -26,142 +26,34 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-<<<<<<< HEAD
-<<<<<<< HEAD
     "@babel/runtime": "^7.4.5",
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 1ccf9bc... feat(login): implement user login
     "@fortawesome/fontawesome-svg-core": "^1.2.18",
     "@fortawesome/free-solid-svg-icons": "^5.8.2",
     "@fortawesome/react-fontawesome": "^0.1.4",
     "axios": "^0.18.0",
     "babel-polyfill": "^6.26.0",
-<<<<<<< HEAD
-=======
-    "axios": "^0.18.0",
->>>>>>> 1c47b90... feat(signup): Users should be able to signup
-=======
->>>>>>> 1ccf9bc... feat(login): implement user login
     "bootstrap": "^4.3.1",
     "coveralls": "^3.0.3",
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.13.2",
+    "expect": "^24.8.0",
     "express": "^4.17.1",
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
     "file-loader": "^3.0.1",
-<<<<<<< HEAD
-<<<<<<< HEAD
     "font-awesome": "^4.7.0",
     "image-webpack-loader": "^4.6.0",
     "prop-types": "^15.7.2",
     "css-loader": "^2.1.1",
-=======
-=======
-    "font-awesome": "^4.7.0",
->>>>>>> 1ccf9bc... feat(login): implement user login
-    "image-webpack-loader": "^4.6.0",
-    "prop-types": "^15.7.2",
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> 1c47b90... feat(signup): Users should be able to signup
-=======
-=======
-=======
->>>>>>> feat(password-reset): implement password reset
-<<<<<<< HEAD
->>>>>>> 1e343b0... feat(password-reset): implement password reset
-=======
-=======
->>>>>>> feat(password-reset): implement password reset
-<<<<<<< HEAD
->>>>>>> 1e6f2c1... feat(password-reset): implement password reset
-=======
-=======
->>>>>>> feat(password-reset): implement password reset
->>>>>>> dbd9224... feat(password-reset): implement password reset
-    "css-loader": "^2.1.1",
->>>>>>> d87cdce... feat(password-reset): implement password reset
-=======
-    "css-loader": "^2.1.1",
->>>>>>> 6daf546... feat(password-reset): implement password reset
-=======
-    "css-loader": "^2.1.1",
->>>>>>> 1646809... feat(password-reset): implement password reset
-=======
-    "css-loader": "^2.1.1",
->>>>>>> 3ea94ba... feat(password-reset): implement password reset
-=======
-    "css-loader": "^2.1.1",
->>>>>>> 63de13b... feat(password-reset): implement password reset
     "react": "^16.8.6",
     "react-bootstrap": "^1.0.0-beta.9",
     "react-dom": "^16.8.6",
     "react-redux": "^7.0.3",
     "react-router-dom": "^5.0.0",
-<<<<<<< HEAD
-<<<<<<< HEAD
-    "react-toastify": "^5.1.1",
     "redux": "^4.0.1",
     "redux-thunk": "^2.3.0",
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
     "url-loader": "^1.1.2",
-    "semantic-ui-react": "^0.87.1",
-    "style-loader": "^0.23.1"
-=======
     "react-toastify": "^5.2.0",
-=======
-    "react-toastify": "^5.1.1",
->>>>>>> 1ccf9bc... feat(login): implement user login
-    "redux": "^4.0.1",
-    "redux-thunk": "^2.3.0",
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-    "url-loader": "^1.1.2"
->>>>>>> 1c47b90... feat(signup): Users should be able to signup
-=======
-=======
->>>>>>> 1e343b0... feat(password-reset): implement password reset
-=======
->>>>>>> 1e6f2c1... feat(password-reset): implement password reset
-=======
->>>>>>> dbd9224... feat(password-reset): implement password reset
-    "url-loader": "^1.1.2",
-=======
->>>>>>> feat(password-reset): implement password reset
-=======
->>>>>>> feat(password-reset): implement password reset
-=======
->>>>>>> feat(password-reset): implement password reset
     "semantic-ui-react": "^0.87.1",
     "style-loader": "^0.23.1"
->>>>>>> d87cdce... feat(password-reset): implement password reset
-=======
-    "semantic-ui-react": "^0.87.1",
-    "style-loader": "^0.23.1"
->>>>>>> 6daf546... feat(password-reset): implement password reset
-=======
-    "semantic-ui-react": "^0.87.1",
-    "style-loader": "^0.23.1"
->>>>>>> 1646809... feat(password-reset): implement password reset
-=======
-    "semantic-ui-react": "^0.87.1",
-    "style-loader": "^0.23.1"
->>>>>>> 3ea94ba... feat(password-reset): implement password reset
-=======
-    "semantic-ui-react": "^0.87.1",
-    "style-loader": "^0.23.1"
->>>>>>> 63de13b... feat(password-reset): implement password reset
   },
   "devDependencies": {
     "@babel/core": "^7.4.5",

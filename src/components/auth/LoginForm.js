@@ -63,6 +63,11 @@ class LoginForm extends Component {
               </Button>
             )}
           </Form>
+          <div className="forgot-password-link">
+            <Link to="/reset_password">
+              Forgot your password?
+            </Link>
+          </div>
           <div>
             <div className="separator">
               <div className="separator-line" />

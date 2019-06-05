@@ -4,8 +4,8 @@ import LoginView from '../views/LoginView';
 import Notfound from '../components/layout/Notfound';
 import AccountActivatedView from '../views/AccountActivateView';
 import EmailSentView from '../views/EmailSentView';
-import ResetPassword from '../components/reset_password';
-
+import ResetPasswordView from '../views/ResetPasswordView';
+import PasswordConfirmView from '../views/PasswordConfirmView';
 
 const routes = [
   {
@@ -36,12 +36,17 @@ const routes = [
   },
   {
     path: '/reset_password',
-    component: ResetPassword,
+    component: ResetPasswordView,
     id: 'reset_password',
   },
   {
+    path: '/password_confirm',
+    component: PasswordConfirmView,
+    id: 'password_confirm',
+  },
+  {
     component: Notfound,
-    id: 'notfound',
+    id: "notfound"
   },
 ];
 
