@@ -31,6 +31,12 @@ export default (state = initialState, action) => {
         isLoading: false,
         error: action.error.response.data,
       };
+    case `${SIGNUP_USER}_SOCIAL`:
+      return {
+        ...state,
+        isLoading: false,
+      };
+
     default:
       return { ...state };
   }

@@ -2,11 +2,13 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { Form, Button, Spinner } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import SocialLogin from './Social';
 import '../../assets/styles/signup.scss';
+import '../../assets/styles/social.scss';
 
 class SignupForm extends Component {
   render() {
-    const { onSubmit, onChange, error, handleConfirmPassword, isLoading } = this.props;
+    const { onSubmit, onChange, error, handleConfirmPassword, isLoading, social } = this.props;
     return (
       <div className="signup-page">
         <h1>Authors Haven</h1>
@@ -89,6 +91,9 @@ class SignupForm extends Component {
               <div className="separator-line" />
               <p className="separator-text">OR</p>
               <div className="separator-line" />
+            </div>
+            <div className="rounded-social-buttons">
+              <SocialLogin />
             </div>
             <div className="login">
               <p>Already have an account?</p>
