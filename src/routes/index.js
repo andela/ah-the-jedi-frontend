@@ -1,5 +1,6 @@
 import HomeView from '../components/home/Home';
 import SignUpView from '../views/SignUpView';
+import ReadArticle from '../components/articles/ReadArticle';
 import LoginView from '../views/LoginView';
 import Notfound from '../components/layout/Notfound';
 import AccountActivatedView from '../views/AccountActivateView';
@@ -55,6 +56,11 @@ const routes = [
     path: '/search',
     component: SearchView,
     id: 'search',
+  },
+  {
+    path: '/articles/:slug',
+    component: ReadArticle,
+    id: 'readarticle',
   },
   {
     component: Notfound,

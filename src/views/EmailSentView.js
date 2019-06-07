@@ -4,10 +4,10 @@ import { Link } from 'react-router-dom';
 import '../assets/styles/emailsent.scss';
 
 /*
-* EmailSentView Component
-*
-*@return {js} to display EmailSentView
-*/
+ * EmailSentView Component
+ *
+ *@return {js} to display EmailSentView
+ */
 class EmailSentView extends Component {
   render() {
     return (
@@ -19,11 +19,9 @@ class EmailSentView extends Component {
         </div>
         <div className="footer">
           <Link className="footer-home" to="/">
-            {' '}
             Home
           </Link>
           <Link className="footer-login" to="/">
-            {' '}
             Login
           </Link>
         </div>

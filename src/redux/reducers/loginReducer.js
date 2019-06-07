@@ -4,7 +4,7 @@ const initialState = {
   isAuthenticated: false,
   data: {},
   error: {},
-  isLoading: false
+  isLoading: false,
 };
 
 /*
@@ -16,12 +16,12 @@ const LoginReducer = (state = initialState, action) => {
     case `${LOGIN_USER}`:
       return {
         ...state,
-        isLoading: true
+        isLoading: true,
       };
 
     case `${LOGIN_USER}_SUCCESS`: {
-      const token = action.response.user.token;
-      const user = action.response.user;
+      const { token } = action.response.user;
+      const { user } = action.response;
       localStorage.setItem('token', `Bearer ${token}`);
       localStorage.setItem('user', JSON.stringify(user));
 
@@ -29,12 +29,12 @@ const LoginReducer = (state = initialState, action) => {
         ...state,
         isAuthenticated: true,
         isLoading: false,
-        data: action.response
+        data: action.response,
       };
     }
 
     case `${LOGIN_USER}_SUCCESS_SOCIAL`: {
-      const token = action.response.token;
+      const { token } = action.response;
       const userObj = action.response;
       const user = JSON.stringify(userObj);
       localStorage.setItem('token', `Bearer ${token}`);
@@ -44,7 +44,7 @@ const LoginReducer = (state = initialState, action) => {
         ...state,
         isAuthenticated: true,
         isLoading: false,
-        data: action.response
+        data: action.response,
       };
     }
 
@@ -54,12 +54,12 @@ const LoginReducer = (state = initialState, action) => {
         isAuthenticated: false,
         isLoading: false,
         error: action.error.response,
-        isError: true
+        isError: true,
       };
     case `${LOGIN_USER}_LOGOUT`:
       return {
         ...state,
-        isAuthenticated: false
+        isAuthenticated: false,
       };
 
     default:

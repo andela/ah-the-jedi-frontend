@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-
+import AllArticles from '../../views/AllArticles';
 
 export class Home extends Component {
   render() {
     return (
       <div>
-        <h1>Welcome to Authors Haven</h1>
+        <AllArticles />
       </div>
     );
   }

@@ -4,6 +4,39 @@ import { successToast, errorToast } from '../../helpers';
 
 import { socialAction } from './SignUpAction';
 
+
+/*
+ *Defines the action types for successful login
+ */
+export const loginSuccess = response => ({
+  type: `${LOGIN_USER}_SUCCESS`,
+  response,
+});
+
+/*
+ *Defines the action types for successful social login
+ */
+export const loginSuccessSocial = response => ({
+  type: `${LOGIN_USER}_SUCCESS_SOCIAL`,
+  response,
+});
+
+/*
+ *Defines the action types for unsuccessful login
+ */
+export const loginFailure = error => ({
+  type: `${LOGIN_USER}_FAILURE`,
+  error,
+});
+
+/*
+ *Defines the action types for loggin out user
+ */
+export const logout = () => ({
+  type: `${LOGIN_USER}_LOGOUT`,
+});
+
+
 /*
  *Defines the loginUser actions and dispatches the right
  *action for either success >>loginSuccess() or
@@ -17,7 +50,7 @@ export const loginUser = (data, history) => dispatch => {
       dispatch(loginSuccess(response.data));
 
       successToast(`Welcome ${response.data.user.username}`);
-      history.push(`@${response.data.user.username}`);
+      history.push('/');
     })
     .catch(error => {
       dispatch(loginFailure(error));
@@ -53,34 +86,3 @@ export const UserSocialLogin = (data, history) => dispatch => {
 export const logoutUser = () => dispatch => {
   dispatch(logout());
 };
-
-/*
- *Defines the action types for successful login
- */
-export const loginSuccess = response => ({
-  type: `${LOGIN_USER}_SUCCESS`,
-  response,
-});
-
-/*
- *Defines the action types for successful social login
- */
-export const loginSuccessSocial = response => ({
-  type: `${LOGIN_USER}_SUCCESS_SOCIAL`,
-  response,
-});
-
-/*
- *Defines the action types for unsuccessful login
- */
-export const loginFailure = error => ({
-  type: `${LOGIN_USER}_FAILURE`,
-  error,
-});
-
-/*
- *Defines the action types for loggin out user
- */
-export const logout = () => ({
-  type: `${LOGIN_USER}_LOGOUT`,
-});

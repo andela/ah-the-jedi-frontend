@@ -16,12 +16,10 @@
   border-radius: 100px;
   z-index: 1;
 }
-
 .intro-banner-vdo-play-btn i {
   line-height: 56px;
   font-size: 30px;
 }
-
 .intro-banner-vdo-play-btn .ripple {
   position: absolute;
   width: 160px;
@@ -58,7 +56,6 @@
     transform: scale(1);
   }
 }
-
 @keyframes ripple {
   0% {
     opacity: 1;

@@ -1,4 +1,12 @@
+/* eslint-disable react/destructuring-assignment */
+/* eslint-disable react/prop-types */
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import moment from 'moment';
+import { withRouter, Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { Card, CardColumns, Spinner } from 'react-bootstrap';
+import { fetchByAuthor, deleteArticle } from '../../redux/actions/FetchArticlesActions';
 
 /*
  * User Articles Component
@@ -7,143 +15,89 @@ import React, { Component } from 'react';
  */
 
 export class UserArticles extends Component {
+  componentWillMount() {
+    const {
+      fetchByAuthor: fetchUserArticles,
+      history,
+      match: {
+        params: { username },
+      },
+    } = this.props;
+    fetchUserArticles(username, history);
+  }
+
   render() {
-    return (
-      <div className="row mt-3">
-        <div className="col-md-1" />
-        <div className="col-md-10">
-          <div className="tab-content profile-tab" id="myTabContent">
-            <div
-              className="tab-pane fade show active"
-              id="home"
-              role="tabpanel"
-              aria-labelledby="home-tab"
-            >
-              <div className="row">
-                <div className="card-deck">
-                  <div className="card">
-                    <img
-                      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog"
-                      className="card-img-top"
-                      alt="..."
-                    />
-                    <div className="card-body">
-                      <h5 className="card-title">Card title</h5>
-                      <p className="card-text">
-                        This is a wider card with supporting text below as a natural lead-in to
-                        additional content. This content is a little bit longer.
-                      </p>
-                    </div>
-                    <div className="card-footer">
-                      <small className="text-muted">Last updated 3 mins ago</small>
-                    </div>
-                  </div>
-                  <div className="card">
-                    <img
-                      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog"
-                      className="card-img-top"
-                      alt="..."
-                    />
-                    <div className="card-body">
-                      <h5 className="card-title">Card title</h5>
-                      <p className="card-text">
-                        This card has supporting text below as a natural lead-in to additional
-                        content.
-                      </p>
-                    </div>
-                    <div className="card-footer">
-                      <small className="text-muted">Last updated 3 mins ago</small>
-                    </div>
-                  </div>
-                  <div className="card">
-                    <img
-                      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog"
-                      className="card-img-top"
-                      alt="..."
-                    />
-                    <div className="card-body">
-                      <h5 className="card-title">Card title</h5>
-                      <p className="card-text">
-                        This is a wider card with supporting text below as a natural lead-in to
-                        additional content. This card has even longer content than the first to show
-                        that equal height action.
-                      </p>
-                    </div>
-                    <div className="card-footer">
-                      <small className="text-muted">Last updated 3 mins ago</small>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="row mt-5">
-                <div className="card-deck">
-                  <div className="card">
-                    <img
-                      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog"
-                      className="card-img-top"
-                      alt="..."
-                    />
-                    <div className="card-body">
-                      <h5 className="card-title">Card title</h5>
-                      <p className="card-text">
-                        This is a wider card with supporting text below as a natural lead-in to
-                        additional content. This content is a little bit longer.
-                      </p>
-                    </div>
-                    <div className="card-footer">
-                      <small className="text-muted">Last updated 3 mins ago</small>
-                    </div>
-                  </div>
-                  <div className="card">
-                    <img
-                      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog"
-                      className="card-img-top"
-                      alt="..."
-                    />
-                    <div className="card-body">
-                      <h5 className="card-title">Card title</h5>
-                      <p className="card-text">
-                        This card has supporting text below as a natural lead-in to additional
-                        content.
-                      </p>
-                    </div>
-                    <div className="card-footer">
-                      <small className="text-muted">Last updated 3 mins ago</small>
-                    </div>
-                  </div>
-                  <div className="card">
-                    <img
-                      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog"
-                      className="card-img-top"
-                      alt="..."
-                    />
-                    <div className="card-body">
-                      <h5 className="card-title">Card title</h5>
-                      <p className="card-text">
-                        This is a wider card with supporting text below as a natural lead-in to
-                        additional content. This card has even longer content than the first to show
-                        that equal height action.
-                      </p>
-                    </div>
-                    <div className="card-footer">
-                      <small className="text-muted">Last updated 3 mins ago</small>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div
-              className="tab-pane fade"
-              id="profile"
-              role="tabpanel"
-              aria-labelledby="profile-tab"
-            />
-          </div>
+    const {
+      match: {
+        params: { username },
+      },
+    } = this.props;
+
+    let userArticles;
+
+    if (
+      this.props.authorArticles &&
+      this.props.authorArticles.authorArticles &&
+      this.props.authorArticles.authorArticles.data
+    ) {
+      const { results } = this.props.authorArticles.authorArticles.data;
+      userArticles = results.map((values, index) => (
+        <Card className="p-3" key={index}>
+          <Link to={`articles/${values.slug}`}>
+            <Card.Title>{values.title}</Card.Title>
+            <Card.Text>{values.description}</Card.Text>
+          </Link>
+          <footer>
+            <small className="text-muted">{moment(values.created_at).format('MMMM Do YYYY')}</small>
+            -
+            <small className="text-muted">
+              {values.readtime}
+              read
+            </small>
+          </footer>
+        </Card>
+      ));
+    } else if (this.props.authorArticles.isLoading) {
+      userArticles = (
+        <div className="text-center" id="no-user-articles">
+          <span>Loading articles...</span>
+          <Spinner animation="grow" variant="primary" />
         </div>
-        <div className="col-md-1" />
+      );
+    } else {
+      userArticles = <div className="ml-5">No articles to display for @{username}</div>;
+    }
+
+    return (
+      <div className="container">
+        <CardColumns className="all-articles" id="user-articles-test">
+          {userArticles}
+        </CardColumns>
+        <hr />
       </div>
     );
   }
 }
 
-export default UserArticles;
+export const mapStateToProps = state => ({
+  authorArticles: state.FetchArticlesReducer,
+});
+
+export const mapDispatchToProps = () => ({
+  fetchByAuthor,
+  deleteArticle,
+});
+
+UserArticles.propTypes = {
+  match: PropTypes.shape({}),
+  fetchByAuthor: PropTypes.func.isRequired,
+};
+
+UserArticles.defaultProps = {
+  match: { params: { username: 'user' } },
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps(),
+)(withRouter(UserArticles));
