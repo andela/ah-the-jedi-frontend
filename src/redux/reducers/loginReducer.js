@@ -23,9 +23,14 @@ const LoginReducer = (state = initialState, action) => {
       const token = action.response.user.token;
       const user = action.response.user;
       localStorage.setItem('token', `Bearer ${token}`);
-      localStorage.setItem('user', user);
+      localStorage.setItem('user', JSON.stringify(user));
 
-      return { ...state, isAuthenticated: true, isLoading: false, data: action.response };
+      return {
+        ...state,
+        isAuthenticated: true,
+        isLoading: false,
+        data: action.response,
+      };
 
     case `${LOGIN_USER}_FAILURE`:
       return {
