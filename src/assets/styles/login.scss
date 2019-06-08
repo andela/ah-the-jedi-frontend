@@ -12,7 +12,20 @@
   .show {
     display: block;
   }
-  @media (min-width: 992px) {
+
+  .signin-form {
+    display: inline-block;
+    width: 70%;
+    height: 75%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    margin-top: 1%;
+    border-radius: 5px;
+  }
+
+  @media (min-width: 1024px) {
     .signin-form {
       display: inline-block;
       box-shadow: $box-shadow;

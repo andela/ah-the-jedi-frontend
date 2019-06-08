@@ -10,3 +10,24 @@
     margin-right: 15px;
   }
 }
+
+.align-rt {
+  text-align: right !important;
+}
+
+@media (max-width: 768px) {
+  .dropdown-custom {
+    border: none !important;
+    margin-top: 0.2em !important;
+  }
+}
+
+@media (max-width: 1020px) and (min-width: 760px) {
+  .dropdown-custom {
+    margin-left: 38em !important;
+    text-align: right !important;
+  }
+  .navbar-custom {
+    margin-left: 7em !important;
+  }
+}
