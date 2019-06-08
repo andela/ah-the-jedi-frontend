@@ -17,17 +17,38 @@
 
 @media (max-width: 768px) {
   .dropdown-custom {
-    border: none !important;
     margin-top: 0.2em !important;
   }
 }
 
-@media (max-width: 1020px) and (min-width: 760px) {
-  .dropdown-custom {
-    margin-left: 38em !important;
-    text-align: right !important;
+@media (max-width: 1024px) {
+  .navbar-expand-lg .navbar-nav .dropdown-menu {
+    position: absolute;
   }
-  .navbar-custom {
-    margin-left: 7em !important;
+
+  .nav-link {
+    text-align: center;
+    margin-right: 10px;
   }
+}
+
+.navbar-collapse.collapse {
+  display: contents !important;
+}
+
+.navbar-nav > li,
+.navbar-nav {
+  float: right !important;
+}
+
+.navbar-right {
+  float: right !important;
+}
+
+.custom-nav-lo {
+  display: flex;
+}
+
+.nav-link {
+  padding-right: 15px;
 }
