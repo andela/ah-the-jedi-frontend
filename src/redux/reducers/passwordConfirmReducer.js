@@ -3,7 +3,7 @@ import { PASSWORD_CONFIRM } from '../constants';
 const initialState = {
   isLoading: false,
   message: '',
-  error: '',
+  error: {},
 };
 
 export default (state = initialState, action) => {
@@ -22,7 +22,7 @@ export default (state = initialState, action) => {
     case `${PASSWORD_CONFIRM}_FAILURE`:
       return {
         ...state,
-        message: action.error,
+        error: action.error.response,
         isLoading: false,
         isError: action.isError,
       };

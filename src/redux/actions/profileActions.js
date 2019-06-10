@@ -24,14 +24,14 @@ export const fetchFail = error => ({
  *failure >>fetchFail()
  */
 
-export const fetchProfile = (username, history) => (dispatch) => {
+export const fetchProfile = (username, history) => dispatch => {
   dispatch({ type: FETCH_PROFILE });
-  axios
+  return axios
     .get(`${BASE_URL}/profiles/${username}`, headers(localStorage.getItem('token')))
-    .then((response) => {
+    .then(response => {
       dispatch(fetchSuccess(response.data.profile));
     })
-    .catch((error) => {
+    .catch(error => {
       dispatch(fetchFail(error.response.data.errors));
       history.push(`/notfound@${username}`);
     });
@@ -43,14 +43,14 @@ export const fetchProfile = (username, history) => (dispatch) => {
  *failure >>fetchFail()
  */
 
-export const updateProfile = (username, data) => (dispatch) => {
+export const updateProfile = (username, data) => dispatch => {
   dispatch({ type: FETCH_PROFILE });
-  axios
+  return axios
     .put(`${BASE_URL}/profiles/${username}`, data, headers(localStorage.getItem('token')))
-    .then((response) => {
+    .then(response => {
       dispatch(fetchSuccess(response.data.profile));
     })
-    .catch((error) => {
+    .catch(error => {
       dispatch(fetchFail(error.response.data.errors));
     });
 };

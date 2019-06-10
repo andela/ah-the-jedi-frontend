@@ -7,7 +7,17 @@ describe('unit tests for sign up componenet', () => {
     signUpUser: jest.fn(),
     onSubmit: jest.fn(),
     onChange: jest.fn(),
+    handleConfirmPassword: jest.fn(),
     error: {},
+    state: {
+      email: '',
+      username: '',
+      bio: '',
+      password: '',
+      confirm_password: '',
+      isInvalid: true,
+      isLoading: false,
+    },
   };
   const event = {
     preventDefault() {},
@@ -31,7 +41,7 @@ describe('unit tests for sign up componenet', () => {
       },
     };
     const newWrapper = shallow(<SignupForm {...newProps} />);
-    expect(newWrapper.find('#username-error').props().children).toEqual(
+    expect(newWrapper.find('#username-error').props().children[0]).toEqual(
       'This is a username password',
     );
   });
