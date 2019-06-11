@@ -17,3 +17,6 @@ export const headers = (token = '') => {
   return config;
 };
 export const FETCH_PROFILE = 'FETCH_PROFILE';
+export const CREATE_ARTICLE = 'CREATE_ARTICLE';
+export const UPDATE_ARTICLE = 'UPDATE_ARTICLE';
+export const GET_ONE_ARTICLE = 'GET_ONE_ARTICLE';

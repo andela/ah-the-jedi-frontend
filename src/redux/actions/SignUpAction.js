@@ -1,14 +1,15 @@
 import axios from 'axios';
 import { SIGNUP_USER, BASE_URL } from '../constants';
+import { async } from 'q';
 
 /*
  * Defines the Account activation actions:
  * dispatches verificationSent on success
  * dispatches verificationFailure on failure
  */
-export const signUpUser = data => dispatch => {
+export const signUpUser = data => async dispatch => {
   dispatch({ type: SIGNUP_USER });
-  axios
+  return axios
     .post(`${BASE_URL}/users/`, data)
     .then(response => {
       dispatch(verificationSent(response));

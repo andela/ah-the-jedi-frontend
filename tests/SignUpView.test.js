@@ -50,7 +50,6 @@ describe('unit tests for sign up view', () => {
         value: 'test1211',
       },
     });
-    console.log(password.value);
     wrapper.find('#form').simulate('submit', {
       preventDefault: () => {},
       target: [{ value: '' }],

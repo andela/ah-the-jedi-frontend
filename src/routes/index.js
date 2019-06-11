@@ -7,6 +7,8 @@ import EmailSentView from '../views/EmailSentView';
 import ResetPasswordView from '../views/ResetPasswordView';
 import PasswordConfirmView from '../views/PasswordConfirmView';
 import ProfileView from '../components/profiles/Profile';
+import CreateArticleView from '../views/CreateArticleView';
+import UpdateArticleView from '../views/UpdateArticleView';
 
 const routes = [
   {
@@ -49,6 +51,16 @@ const routes = [
     path: '/@:username',
     component: ProfileView,
     id: 'profile',
+  },
+  {
+    path: '/create',
+    component: CreateArticleView,
+    id: 'create',
+  },
+  {
+    path: '/update/:slug',
+    component: UpdateArticleView,
+    id: 'update',
   },
   {
     component: Notfound,

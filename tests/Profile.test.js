@@ -37,6 +37,5 @@ describe('Tests for Profile Component', () => {
 
   it('renders profile without errors ', () => {
     let profileContainer = findByAttribute(component, 'profileTestDiv');
-    console.log(profileContainer);
   });
 });

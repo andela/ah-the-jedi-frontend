@@ -7,7 +7,7 @@ import '../../assets/styles/notfound.scss';
  *@return {js} to display Notfound page
  */
 const Notfound = () => (
-  <section id="title">
+  <section className="title">
     <div className="circles">
       <p>
         404

@@ -6,9 +6,9 @@ import { SIGNUP_USER, BASE_URL } from '../constants';
  * dispatches signUpActivateSuccess on success
  * dispatches activationFailure on failure
  */
-export const activateUser = (id, token) => dispatch => {
+export const activateUser = (id, token) => async dispatch => {
   const url = `${BASE_URL}/users/activate/?uid=${id}&token=${token}`;
-  axios
+  return axios
     .post(url)
     .then(response => {
       dispatch(signUpActivateSuccess(response));
