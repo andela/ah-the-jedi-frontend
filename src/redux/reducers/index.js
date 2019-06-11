@@ -8,6 +8,8 @@ import SearchReducer from './SearchReducer';
 import FetchArticlesReducer from './FetchArticlesReducer';
 import CreateArticleReducer from '../reducers/CreateArticleReducer';
 import UpdateArticleReducer from '../reducers/UpdateArticleReducer';
+import CreateCommentReducer from './createCommentReducer';
+import FetchCommentsReducer from './FetchCommentsReducer';
 
 const rootReducer = combineReducers({
   signup: SignUpReducer,
@@ -19,6 +21,8 @@ const rootReducer = combineReducers({
   FetchArticlesReducer,
   createArticle: CreateArticleReducer,
   updateArticle: UpdateArticleReducer,
+  create_comment: CreateCommentReducer,
+  FetchCommentsReducer,
 });
 
 export default rootReducer;

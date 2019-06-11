@@ -5,6 +5,7 @@ import {
 import { NavLink, Link } from 'react-router-dom';
 import parse from 'html-react-parser';
 import PropTypes from 'prop-types';
+import Comments from '../comments/Comments';
 
 class OneArticle extends Component {
   render() {
@@ -41,7 +42,7 @@ class OneArticle extends Component {
                 </Col>
               </div>
             </Popover>
-          )}
+)}
           rootClose
         >
           <Button variant="outline-danger" size="sm">
@@ -124,7 +125,8 @@ class OneArticle extends Component {
             </div>
           </div>
           <hr />
-          <p>comment section</p>
+          {' '}
+          <Comments slug={slug} />
         </div>
       </div>
     );

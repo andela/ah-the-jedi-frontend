@@ -1,0 +1,259 @@
+/*
+    Image credits:
+    uifaces.com (http://uifaces.com/authorized)
+*/
+
+@import './variables.scss';
+
+#login {
+  display: none;
+}
+.login,
+.logout {
+  position: absolute;
+  top: -3px;
+  right: 0;
+}
+.page-header {
+  position: relative;
+}
+.reviews {
+  color: #555;
+  font-weight: bold;
+  margin: 10px auto 10px 12%;
+}
+
+.child-reviews {
+  color: #555;
+  font-weight: bold;
+  margin: 10px auto 10px 8%;
+  font-size: 16px;
+}
+.notes {
+  color: #999;
+  font-size: 12px;
+}
+.media .media-object {
+  max-width: 80px;
+  border-radius: 50%;
+}
+.media-body {
+  position: relative;
+}
+.media-date {
+  position: absolute;
+  right: 25px;
+  top: 25px;
+}
+.media-date li {
+  padding: 0;
+}
+.media-date li:first-child:before {
+  content: '';
+}
+.media-date li:before {
+  content: '.';
+  margin-left: -2px;
+  margin-right: 2px;
+}
+.media-comment {
+  margin-bottom: 10px;
+}
+li.media-replied {
+  margin: 0 0 5px 50px;
+}
+
+.media-replied .media-heading {
+  padding-left: 6px;
+}
+
+.btn-circle {
+  font-weight: bold;
+  font-size: 12px;
+  padding: 6px 15px;
+  border-radius: 20px;
+}
+.btn-circle span {
+  padding-right: 6px;
+}
+.embed-responsive {
+  margin-bottom: 20px;
+}
+.tab-content {
+  padding: 50px 15px;
+  border: 1px solid #ddd;
+  border-top: 0;
+  border-bottom-right-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+.custom-input-file {
+  overflow: hidden;
+  position: relative;
+  width: 120px;
+  height: 120px;
+  background: $grey url('https://s3.amazonaws.com/uifaces/faces/twitter/walterstephanie/128.jpg');
+  background-size: 120px;
+  border-radius: 120px;
+}
+input[type='file'] {
+  z-index: 999;
+  line-height: 0;
+  font-size: 0;
+  position: absolute;
+  opacity: 0;
+  filter: alpha(opacity = 0);
+  -ms-filter: 'alpha(opacity=0)';
+  margin: 0;
+  padding: 0;
+  left: 0;
+}
+.uploadPhoto {
+  position: absolute;
+  top: 25%;
+  left: 25%;
+  display: none;
+  width: 50%;
+  height: 50%;
+  color: $white;
+  text-align: center;
+  line-height: 60px;
+  text-transform: uppercase;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 50px;
+  cursor: pointer;
+}
+.custom-input-file:hover .uploadPhoto {
+  display: block;
+}
+
+.list-inline {
+  padding-left: 0;
+  margin-left: -5px;
+  list-style: none;
+}
+
+.media {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: flex-start;
+}
+
+.btn-warning {
+  margin: 10px;
+  color: #212529;
+  background-color: #ffc107;
+  border-color: #ffc107;
+}
+
+.media-list {
+  padding-left: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.media,
+.media-body {
+  overflow: hidden;
+  zoom: 1;
+}
+
+.well {
+  min-height: 20px;
+  height: 2;
+  padding: 19px;
+  margin-bottom: 10px;
+  background-color: $lightgray;
+  margin-left: 2%;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+}
+
+.media-date {
+  position: absolute;
+  right: 25px;
+  top: 25px;
+  display: flex;
+}
+.btn-info {
+  color: $white;
+  border-color: #17a2b8;
+}
+
+.text-capitalize {
+  text-transform: capitalize !important;
+  font-size: 90%;
+}
+
+.btn-info {
+  color: $white;
+  background-color: #007bff !important;
+  border-color: #007bff;
+}
+
+.comment-thread {
+  width: 100%;
+}
+
+.pull-left {
+  float: left;
+}
+
+.thread-image {
+  width: 50px;
+  height: 50px;
+}
+
+.threaded {
+  margin-left: 2%;
+}
+
+.glyphicon-send {
+  height: 10px !important;
+
+  a {
+    text-decoration: none;
+  }
+  a:hover {
+    text-decoration: none;
+  }
+}
+
+.comment-img {
+  width: 15px;
+  height: 15px;
+  cursor: pointer;
+}
+
+.reply {
+  color: blue !important;
+  cursor: pointer;
+}
+
+.comments-count {
+  color: blue;
+  padding: 2px;
+}
+
+.reply-error {
+  color: red;
+}
+
+.focus-click:focus {
+  outline: transparent;
+}
+
+.comments-loader {
+  position: relative;
+  margin: 0 auto;
+  clear: left;
+  height: auto;
+  z-index: 0;
+  text-align: center;
+}
+
+.comments-count {
+  color: blue;
+}

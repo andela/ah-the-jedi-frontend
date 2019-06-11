@@ -1,6 +1,6 @@
 import HomeView from '../components/home/Home';
+import ReadArticle from '../components/articles/readArticle';
 import SignUpView from '../views/SignUpView';
-import ReadArticle from '../components/articles/ReadArticle';
 import LoginView from '../views/LoginView';
 import Notfound from '../components/layout/Notfound';
 import AccountActivatedView from '../views/AccountActivateView';
