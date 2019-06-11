@@ -9,6 +9,11 @@ import '../../assets/styles/header.scss';
  */
 const LoggedOutLinks = () => (
   <div className="custom-nav-lo">
+    <NavLink className="nav-link" to="/search">
+      <span role="img" aria-label="search">
+        &#128269;
+      </span>
+    </NavLink>
     <NavLink className="nav-link" to="/signup">
       Sign up
     </NavLink>

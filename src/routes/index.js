@@ -7,6 +7,7 @@ import EmailSentView from '../views/EmailSentView';
 import ResetPasswordView from '../views/ResetPasswordView';
 import PasswordConfirmView from '../views/PasswordConfirmView';
 import ProfileView from '../components/profiles/Profile';
+import SearchView from '../views/SearchView';
 
 const routes = [
   {
@@ -49,6 +50,11 @@ const routes = [
     path: '/@:username',
     component: ProfileView,
     id: 'profile',
+  },
+  {
+    path: '/search',
+    component: SearchView,
+    id: 'search',
   },
   {
     component: Notfound,

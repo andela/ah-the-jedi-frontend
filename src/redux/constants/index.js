@@ -17,3 +17,4 @@ export const headers = (token = '') => {
   return config;
 };
 export const FETCH_PROFILE = 'FETCH_PROFILE';
+export const SEARCH = 'SEARCH';

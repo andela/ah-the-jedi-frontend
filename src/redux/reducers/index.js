@@ -4,6 +4,7 @@ import LoginReducer from './loginReducer';
 import resetPasswordReducer from './resetPasswordReducer';
 import passwordConfirmReducer from './passwordConfirmReducer';
 import profile from './profileReducer';
+import SearchReducer from './SearchReducer';
 
 const rootReducer = combineReducers({
   signup: SignUpReducer,
@@ -11,6 +12,7 @@ const rootReducer = combineReducers({
   reset_password: resetPasswordReducer,
   password_confirm: passwordConfirmReducer,
   profile,
+  SearchReducer,
 });
 
 export default rootReducer;

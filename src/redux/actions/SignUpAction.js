@@ -28,7 +28,7 @@ export const verificationSent = response => ({
 });
 
 /*
- * dispatches the action type SIGN_UP_SEND_VERIFICATION_FAILURE type on success
+ * dispatches the action type SIGN_UP_SEND_VERIFICATION_FAILURE type on failure
  */
 export const verificationFailure = error => ({
   type: `${SIGNUP_USER}_SEND_VERIFICATION_FAILURE`,

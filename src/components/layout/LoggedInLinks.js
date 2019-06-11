@@ -3,6 +3,7 @@ import React from 'react';
 import { NavLink, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { logoutUser } from '../../redux/actions/loginActions';
+import '../../assets/styles/header.scss';
 
 /*
  *@return {jsx} to display in the Header component
@@ -25,6 +26,11 @@ class LoggedInLinks extends React.Component {
     return (
       <div className="row">
         <div className="col-md-10 navbar-custom">
+          <NavLink className="nav-link" to="/search">
+            <span role="img" aria-label="search">
+              &#128269;
+            </span>
+          </NavLink>
           <a
             className="nav-link dropdown-toggle"
             href="#"
