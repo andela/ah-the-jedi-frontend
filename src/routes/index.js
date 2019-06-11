@@ -9,6 +9,8 @@ import ResetPasswordView from '../views/ResetPasswordView';
 import PasswordConfirmView from '../views/PasswordConfirmView';
 import ProfileView from '../components/profiles/Profile';
 import SearchView from '../views/SearchView';
+import CreateArticleView from '../views/CreateArticleView';
+import UpdateArticleView from '../views/UpdateArticleView';
 
 const routes = [
   {
@@ -61,6 +63,18 @@ const routes = [
     path: '/articles/:slug',
     component: ReadArticle,
     id: 'readarticle',
+    exact: true,
+  },
+  {
+    path: '/create',
+    component: CreateArticleView,
+    id: 'create',
+  },
+  {
+    path: '/articles/update/:slug',
+    component: UpdateArticleView,
+    id: 'update',
+    exact: true,
   },
   {
     component: Notfound,

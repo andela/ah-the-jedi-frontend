@@ -6,6 +6,8 @@ import passwordConfirmReducer from './passwordConfirmReducer';
 import profile from './profileReducer';
 import SearchReducer from './SearchReducer';
 import FetchArticlesReducer from './FetchArticlesReducer';
+import CreateArticleReducer from '../reducers/CreateArticleReducer';
+import UpdateArticleReducer from '../reducers/UpdateArticleReducer';
 
 const rootReducer = combineReducers({
   signup: SignUpReducer,
@@ -15,6 +17,8 @@ const rootReducer = combineReducers({
   profile,
   SearchReducer,
   FetchArticlesReducer,
+  createArticle: CreateArticleReducer,
+  updateArticle: UpdateArticleReducer,
 });
 
 export default rootReducer;

@@ -45,6 +45,11 @@ class LoggedInLinks extends React.Component {
           </a>
           <div className="dropdown-menu align-rt dropdown-custom" aria-labelledby="navbarDropdown">
             <div className="col-md-6">
+              <NavLink className="nav-link" to="/create">
+                Create Article
+              </NavLink>
+            </div>
+            <div className="col-md-6">
               <NavLink to={profile} className="nav-link">
                 Profile
               </NavLink>

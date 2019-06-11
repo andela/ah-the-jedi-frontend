@@ -36,6 +36,6 @@ describe('Tests for Profile Component', () => {
   });
 
   it('renders profile without errors ', () => {
-    const profileContainer = findByAttribute(component, 'profileTestDiv');
+    let profileContainer = findByAttribute(component, 'profileTestDiv');
   });
 });
