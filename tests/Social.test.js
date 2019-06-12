@@ -108,6 +108,7 @@ describe('unit tests for clicking social buttons', () => {
   it('should call method', () => {
     const component = shallow(<FacebookLogin />);
     expect(component.exists()).toEqual(true);
+    console.log(tree.props());
     tree.simulate('click');
     expect(mockComponentClickedFn).toBeCalled();
   });

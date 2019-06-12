@@ -1,4 +1,3 @@
-@import './variables.scss';
 .emailsent-page {
   h1 {
     text-align: center;
@@ -9,9 +8,9 @@
     display: flex;
     align-items: center;
     display: inline-block;
-    -moz-box-shadow: 1px 2px 4px $box-shadow-grey;
-    -webkit-box-shadow: 1px 2px 4px $box-shadow-grey;
-    box-shadow: 1px 2px 4px $box-shadow-grey;
+    -moz-box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.5);
+    -webkit-box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.5);
+    box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.5);
     padding: 50px 90px 50px 90px;
     width: 40%;
     height: 75%;
