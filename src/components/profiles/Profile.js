@@ -50,7 +50,9 @@ export class Profile extends Component {
   onSubmit = e => {
     e.preventDefault();
 
-    const { first_name, last_name, bio, image } = this.state;
+    const {
+      first_name, last_name, bio, image,
+    } = this.state;
 
     const formData = new FormData();
 
@@ -85,7 +87,9 @@ export class Profile extends Component {
   }
 
   render() {
-    const { isChanged: isLocalChanged, first_name, last_name, bio } = this.state;
+    const {
+      isChanged: isLocalChanged, first_name, last_name, bio,
+    } = this.state;
 
     const {
       profile: { profile },
@@ -125,9 +129,9 @@ export class Profile extends Component {
           onBlur={(val, isChanged) => {
             this.updateListing(isChanged, key, val);
           }}
-          style={{ width: '200px' }}
+          style={{ width: '200px', borderBottom: '1px solid #D3D3D3' }}
           inputStyle={{ width: '150px' }}
-          className="border-bottom"
+          className=""
           id={id}
         />
       );
@@ -143,8 +147,8 @@ export class Profile extends Component {
                 <div className="profile-img">
                   <img
                     src={
-                      profile.image ||
-                      'https://res.cloudinary.com/do8v0ew77/image/upload/v1559819721/20190606111521.png'
+                      profile.image
+                      || 'https://res.cloudinary.com/do8v0ew77/image/upload/v1559819721/20190606111521.png'
                     }
                     alt=""
                   />
@@ -298,6 +302,7 @@ export class Profile extends Component {
 Profile.propTypes = {
   match: PropTypes.shape({}),
   profile: PropTypes.shape({}),
+  history: PropTypes.shape({}),
   fetchProfile: PropTypes.func.isRequired,
   updateProfile: PropTypes.func.isRequired,
 };
@@ -305,6 +310,7 @@ Profile.propTypes = {
 Profile.defaultProps = {
   match: { params: { username: 'user' } },
   profile: { profile: {} },
+  history: {},
 };
 const mapStateToProps = ({ profile }) => ({
   profile,

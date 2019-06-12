@@ -1,9 +1,9 @@
 import React from 'react';
 import { mount, shallow } from 'enzyme';
-import SignUpView from '../src/views/SignUpView';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import store from '../src/redux/store/';
+import SignUpView from '../src/views/SignUpView';
+import store from '../src/redux/store';
 
 describe('unit tests for sign up view', () => {
   const script = document.createElement('script');
@@ -50,7 +50,6 @@ describe('unit tests for sign up view', () => {
         value: 'test1211',
       },
     });
-    console.log(password.value);
     wrapper.find('#form').simulate('submit', {
       preventDefault: () => {},
       target: [{ value: '' }],

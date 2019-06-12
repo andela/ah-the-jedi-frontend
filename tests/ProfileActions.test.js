@@ -1,12 +1,12 @@
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import moxios from 'moxios';
-import { BASE_URL } from '../src/redux/constants';
-import { fetchSuccess, fetchFail } from '../src/redux/actions/profileActions';
+import { FETCH_PROFILE } from '../src/redux/constants';
+import { updateProfile, fetchProfile } from '../src/redux/actions/profileActions';
 
 describe('Test profile actions', () => {
-  let testStore = configureMockStore([thunk]);
-  let store = testStore({});
+  const testStore = configureMockStore([thunk]);
+  const store = testStore({});
 
   beforeEach(() => {
     store.clearActions();
@@ -29,57 +29,106 @@ describe('Test profile actions', () => {
     following: 'True',
   };
 
-  it('test successful fetch profile actions', async done => {
-    moxios.stubRequest(`${BASE_URL}/profiles/Leewel`, {
-      status: 200,
-      response: {
-        profile,
-      },
+  const error = {
+    status: 404,
+    message: 'Request failed with status code 404',
+  };
+
+  it('test successful fetch profile actions', () => {
+    const { username } = profile;
+
+    moxios.wait(() => {
+      const request = moxios.requests.mostRecent();
+      request.respondWith({
+        status: 200,
+        response: {
+          profile,
+        },
+      });
     });
 
-    await store.dispatch(fetchSuccess());
-    expect(store.getActions()[0].type).toEqual('FETCH_PROFILE_SUCCESS');
-    done();
+    const expectedActions = [
+      { type: FETCH_PROFILE },
+      { type: `${FETCH_PROFILE}_SUCCESS`, profile },
+    ];
+
+    return store
+      .dispatch(fetchProfile(username))
+      .then(() => {
+        expect(store.getActions()[1].type).toEqual(expectedActions[1].type);
+      })
+      .catch(() => {
+        expect(store.getActions()).toEqual(expectedActions);
+      });
   });
 
-  it('test fetch profile actions with errors', async done => {
-    moxios.stubRequest(`${BASE_URL}/profiles/Leewel`, {
-      status: 404,
-      response: {
-        errors: 'profile with this username does not exist',
-        status: '404',
-      },
+  it('test fetch profile actions with errors', () => {
+    const { username } = profile;
+
+    moxios.wait(() => {
+      const request = moxios.requests.mostRecent();
+      request.respondWith({
+        status: 404,
+        response: {
+          errors: 'profile with this username does not exist',
+          status: '404',
+        },
+      });
     });
 
-    await store.dispatch(fetchFail());
-    expect(store.getActions()[0].type).toEqual('FETCH_PROFILE_FAILURE');
-    done();
+    const expectedActions = [{ type: FETCH_PROFILE }, { type: `${FETCH_PROFILE}_FAILURE`, error }];
+
+    return store.dispatch(fetchProfile(username)).catch(() => {
+      expect(store.getActions()[1].type).toEqual(expectedActions[1].type);
+    });
   });
 
-  it('test successful edit profile actions', async done => {
-    moxios.stubRequest(`${BASE_URL}/profiles/Leewel/`, {
-      status: 200,
-      response: {
-        profile,
-      },
+  it('test successful edit profile actions', () => {
+    const { username } = profile;
+
+    moxios.wait(() => {
+      const request = moxios.requests.mostRecent();
+      request.respondWith({
+        status: 200,
+        response: {
+          profile,
+        },
+      });
     });
 
-    await store.dispatch(fetchSuccess());
-    expect(store.getActions()[0].type).toEqual('FETCH_PROFILE_SUCCESS');
-    done();
+    const expectedActions = [
+      { type: FETCH_PROFILE },
+      { type: `${FETCH_PROFILE}_SUCCESS`, profile },
+    ];
+
+    return store
+      .dispatch(updateProfile(username))
+      .then(() => {
+        expect(store.getActions()[1].type).toEqual(expectedActions[1].type);
+      })
+      .catch(() => {
+        expect(store.getActions()).toEqual(expectedActions);
+      });
   });
 
-  it('test edit profile actions with errors', async done => {
-    moxios.stubRequest(`${BASE_URL}/profiles/Leewel/`, {
-      status: 404,
-      response: {
-        errors: 'profile with this username does not exist',
-        status: '404',
-      },
+  it('test edit profile actions with errors', () => {
+    const { username } = profile;
+
+    moxios.wait(() => {
+      const request = moxios.requests.mostRecent();
+      request.respondWith({
+        status: 404,
+        response: {
+          errors: 'profile with this username does not exist',
+          status: '404',
+        },
+      });
     });
 
-    await store.dispatch(fetchFail());
-    expect(store.getActions()[0].type).toEqual('FETCH_PROFILE_FAILURE');
-    done();
+    const expectedActions = [{ type: FETCH_PROFILE }, { type: `${FETCH_PROFILE}_FAILURE`, error }];
+
+    return store.dispatch(updateProfile(username)).catch(() => {
+      expect(store.getActions()[1].type).toEqual(expectedActions[1].type);
+    });
   });
 });

@@ -1,16 +1,16 @@
+/* eslint-disable react/no-unused-state */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { signUpUser } from '../redux/actions/SignUpAction';
 import SignupForm from '../components/auth/Signup';
-import { UserSocialLogin } from '../redux/actions/loginActions';
-import SocialLogin from '../components/auth/Social';
 
 /*
  * SignUpView Component
  *
  *@return {js} to display SignUpView
  */
+
 class SignUpView extends Component {
   state = {
     email: '',
@@ -18,6 +18,7 @@ class SignUpView extends Component {
     bio: '',
     password: '',
     confirm_password: '',
+    isInvalid: true,
     isLoading: false,
   };
 
@@ -41,10 +42,14 @@ class SignUpView extends Component {
    */
   onSubmit = event => {
     event.preventDefault();
-    if (this.state.password === this.state.confirm_password) {
-      const { signUpUser } = this.props;
-      const { email, username, bio, password } = this.state;
-      signUpUser({
+
+    const { password: statePassword, confirm_password: confirmPassword } = this.state;
+    if (statePassword === confirmPassword) {
+      const { signUpUser: userSignup } = this.props;
+      const {
+        email, username, bio, password,
+      } = this.state;
+      userSignup({
         user: {
           email,
           username,
@@ -61,26 +66,32 @@ class SignUpView extends Component {
    * and confirm passwords match
    */
   handleConfirmPassword = e => {
+    const { password } = this.state;
     this.setState({ confirm_password: e.target.value });
     /* istanbul ignore next */
-    if (e.target.value !== this.state.password) {
+    if (e.target.value !== password) {
       document.getElementById('match').style.borderColor = 'red';
+      document.getElementById('confirm-error').innerText = 'Ensure that both passwords match';
       return false;
-    } else {
-      document.getElementById('match').style.borderColor = 'green';
-      return true;
     }
+    document.getElementById('match').style.borderColor = 'green';
+    document.getElementById('confirm-error').innerText = '';
+    this.setState({ isInvalid: false });
+    return true;
   };
 
   render() {
     const { error } = this.props;
+    const {
+      signup: { isLoading },
+    } = this.props;
     return (
       <SignupForm
         onChange={this.onChange}
         state={this.state}
         handleConfirmPassword={this.handleConfirmPassword}
         onSubmit={this.onSubmit}
-        isLoading={this.props.signup.isLoading}
+        isLoading={isLoading}
         error={error}
       />
     );
@@ -89,6 +100,13 @@ class SignUpView extends Component {
 
 SignUpView.propTypes = {
   signUpUser: PropTypes.func.isRequired,
+  error: PropTypes.shape({}),
+  signup: PropTypes.shape({}),
+};
+
+SignUpView.defaultProps = {
+  error: {},
+  signup: { isLoading: false },
 };
 
 const mapDispatchToProps = () => ({

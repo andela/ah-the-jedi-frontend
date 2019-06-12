@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { errorToast } from '../helpers/toastify';
+import PropTypes from 'prop-types';
 import { passwordConfirm } from '../redux/actions/passwordConfirmAction';
 import { PasswordConfirmForm } from '../components/auth/PasswordConfirmForm';
 
@@ -12,50 +12,69 @@ export class PasswordConfirmView extends Component {
     password: '',
     confirmPassword: '',
     isError: false,
+    isInvalid: true,
   };
 
-  onChange = (e) => {
+  onChange = e => {
     const {
       target: { name, value },
     } = e;
     this.setState({ [name]: value });
   };
 
-  handleConfirmPassword = (e) => {
+  handleConfirmPassword = e => {
     const { password } = this.state;
     this.setState({ confirmPassword: e.target.value });
     if (e.target.value !== password) {
       document.getElementById('myDiv').style.borderColor = 'red';
+      document.getElementById('confirm-error').innerText = 'Ensure that both passwords match';
     } else {
       document.getElementById('myDiv').style.borderColor = 'green';
+      document.getElementById('confirm-error').innerText = '';
+      this.setState({ isInvalid: false });
     }
   };
 
   handleSubmit = () => {
-    const { passwordConfirm } = this.props;
-    passwordConfirm(this.state);
+    const { passwordConfirm: confirmPassword, history } = this.props;
+    confirmPassword(this.state, history);
   };
 
-  onSubmit = (e) => {
-    const { password, confirmPassword } = this.state;
+  onSubmit = e => {
     e.preventDefault();
-    if (password === confirmPassword) {
-      this.handleSubmit();
-    } else {
-      errorToast("Passwords don't match.");
-    }
+    this.handleSubmit();
   };
 
   render() {
+    const {
+      error,
+      Password_Confirm: { isLoading },
+    } = this.props;
     return (
       <PasswordConfirmForm
         onChange={this.onChange}
         handleConfirmPassword={this.handleConfirmPassword}
         onSubmit={this.onSubmit}
+        error={error}
+        state={this.state}
+        isLoading={isLoading}
       />
     );
   }
 }
+
+PasswordConfirmView.propTypes = {
+  passwordConfirm: PropTypes.func.isRequired,
+  error: PropTypes.shape({}),
+  history: PropTypes.shape({}),
+  Password_Confirm: PropTypes.shape({}),
+};
+
+PasswordConfirmView.defaultProps = {
+  error: {},
+  history: {},
+  Password_Confirm: { isLoading: {} },
+};
 
 const mapDispatchToProps = () => ({
   passwordConfirm,
@@ -63,6 +82,7 @@ const mapDispatchToProps = () => ({
 
 const mapStateToProps = state => ({
   Password_Confirm: state.password_confirm,
+  error: state.password_confirm.error,
 });
 
 export default connect(

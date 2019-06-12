@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { loginUser } from '../redux/actions/loginActions';
 import LoginForm from '../components/auth/LoginForm';
 
@@ -28,12 +29,14 @@ class LoginView extends Component {
    */
   onSubmit = event => {
     event.preventDefault();
-    const { loginUser, history } = this.props;
-    loginUser(
+    const { loginUser: userLogin, history } = this.props;
+
+    const { email, password } = this.state;
+    userLogin(
       {
         user: {
-          email: this.state.email,
-          password: this.state.password,
+          email,
+          password,
         },
       },
       history,
@@ -41,13 +44,19 @@ class LoginView extends Component {
   };
 
   render() {
+    const {
+      error,
+      login: { isLoading },
+    } = this.props;
+    const { email, password } = this.state;
     return (
       <LoginForm
         onChange={this.onChange}
         onSubmit={this.onSubmit}
-        email={this.state.email}
-        isLoading={this.props.login.isLoading}
-        password={this.state.password}
+        email={email}
+        isLoading={isLoading}
+        password={password}
+        error={error}
       />
     );
   }
@@ -61,6 +70,19 @@ export const mapStateToProps = state => ({
   login: state.LoginReducer,
   error: state.LoginReducer.error,
 });
+
+LoginView.propTypes = {
+  loginUser: PropTypes.func.isRequired,
+  login: PropTypes.shape({}),
+  error: PropTypes.shape({}),
+  history: PropTypes.shape({}),
+};
+
+LoginView.defaultProps = {
+  history: {},
+  error: {},
+  login: { isLoading: false },
+};
 
 export default connect(
   mapStateToProps,

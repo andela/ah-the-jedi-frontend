@@ -3,12 +3,27 @@ import React, { Component } from 'react';
 import { Form, Button, Spinner } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import SocialLogin from './Social';
+import displayError from '../../helpers/inputerror';
 import '../../assets/styles/signup.scss';
 import '../../assets/styles/social.scss';
+import '../../assets/styles/common.scss';
+
+/*
+ * SignupForm Component
+ *
+ *@return {jsx}
+ */
 
 class SignupForm extends Component {
   render() {
-    const { onSubmit, onChange, error, handleConfirmPassword, isLoading, social } = this.props;
+    const {
+      onSubmit,
+      onChange,
+      error,
+      handleConfirmPassword,
+      isLoading,
+      state: { confirm_password: confirmPassword, isInvalid },
+    } = this.props;
     return (
       <div className="signup-page">
         <h1>Authors Haven</h1>
@@ -25,8 +40,9 @@ class SignupForm extends Component {
                 onChange={onChange}
                 required
               />
-              <Form.Control.Feedback type="invalid">
+              <Form.Control.Feedback id="email-error" type="invalid">
                 {error.errors && error.errors.email && error.errors.email[0]}
+                {error.errors && error.errors.email ? displayError('email-error') : ''}
               </Form.Control.Feedback>
             </Form.Group>
 
@@ -40,8 +56,9 @@ class SignupForm extends Component {
                 onChange={onChange}
                 required
               />
-              <Form.Control.Feedback id="username-error" type="invalid">
+              <Form.Control.Feedback id="username-error" type="invalid" className="">
                 {error.errors && error.errors.username && error.errors.username[0]}
+                {error.errors && error.errors.username ? displayError('username-error') : ''}
               </Form.Control.Feedback>
             </Form.Group>
 
@@ -58,12 +75,14 @@ class SignupForm extends Component {
               />
               <Form.Control.Feedback type="invalid">
                 {error.errors && error.errors.password && error.errors.password[0]}
+                {error.errors && error.errors.password ? displayError('username-error') : ''}
               </Form.Control.Feedback>
             </Form.Group>
 
             <Form.Group>
               <Form.Label>Confirm Password</Form.Label>
               <Form.Control
+                isInvalid={!!confirmPassword && isInvalid}
                 type="password"
                 placeholder="Confirm password"
                 id="match"
@@ -71,6 +90,7 @@ class SignupForm extends Component {
                 name="confirm_password"
                 required
               />
+              <Form.Control.Feedback id="confirm-error" type="invalid" className="" />
             </Form.Group>
 
             <div />
@@ -112,6 +132,16 @@ class SignupForm extends Component {
 SignupForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
   onChange: PropTypes.func.isRequired,
+  handleConfirmPassword: PropTypes.func.isRequired,
+  error: PropTypes.shape({}),
+  state: PropTypes.shape({}),
+  isLoading: PropTypes.bool,
+};
+
+SignupForm.defaultProps = {
+  error: {},
+  state: { isInvalid: true, confirmPassword: '' },
+  isLoading: false,
 };
 
 export default SignupForm;

@@ -1,7 +1,7 @@
 import axios from 'axios';
-import { LOGIN_USER, SIGNUP_USER } from '../constants';
+import { LOGIN_USER, SIGNUP_USER, BASE_URL } from '../constants';
 import { successToast, errorToast } from '../../helpers';
-import { BASE_URL } from '../constants/index';
+
 import { socialAction } from './SignUpAction';
 
 /*
@@ -21,7 +21,6 @@ export const loginUser = (data, history) => dispatch => {
     })
     .catch(error => {
       dispatch(loginFailure(error));
-      errorToast(error.response.data.errors.error[0]);
     });
 };
 
