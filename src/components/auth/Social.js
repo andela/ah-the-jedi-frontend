@@ -50,7 +50,7 @@ class SocialLogin extends Component {
    * onFailure:
    * Displays error message in case of failure
    */
-  onFailure = error => {
+  onFailure = () => {
     errorToast('Oops! something went wrong, please try again');
   };
 

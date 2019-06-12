@@ -30,7 +30,7 @@ class Header extends Component {
           <span className="navbar-toggler-icon" />
         </button>
 
-        <div className="collapse navbar-collapse" id="navbarSupportedContent">
+        <div className="collapse navbar-collapse align-rt" id="navbarSupportedContent">
           <ul className="navbar-nav ml-auto">{links}</ul>
         </div>
       </nav>

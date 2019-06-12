@@ -23,10 +23,10 @@ class LoggedInLinks extends React.Component {
     const profile = `/@${username}`;
 
     return (
-      <div className="row ml-5">
-        <div className="col-md-10">
+      <div className="row">
+        <div className="col-md-10 navbar-custom">
           <a
-            className="nav-link dropdown-toggle ml-5"
+            className="nav-link dropdown-toggle"
             href="#"
             id="navbarDropdown"
             role="button"
@@ -37,7 +37,7 @@ class LoggedInLinks extends React.Component {
             <i className="fa fa-user-circle ml-3 mr-2" />
             <span className="mr-1 ">{username}</span>
           </a>
-          <div className="dropdown-menu" aria-labelledby="navbarDropdown">
+          <div className="dropdown-menu align-rt dropdown-custom" aria-labelledby="navbarDropdown">
             <div className="col-md-6">
               <NavLink to={profile} className="nav-link">
                 Profile
