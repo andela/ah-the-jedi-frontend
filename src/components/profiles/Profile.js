@@ -15,7 +15,7 @@ import UserArticlesView from '../articles/UserArticles';
 import { fetchProfile, updateProfile } from '../../redux/actions/profileActions';
 import LoaderView from '../layout/Loader';
 import UserReports from './UserReports';
-
+import FollowButton from '../follows/FollowButton';
 
 /*
  * Profile Component
@@ -154,7 +154,13 @@ export class Profile extends Component {
                   />
                   <div className={isProfileOwner ? 'file btn btn-lg btn-primary' : 'hidden'}>
                     Change Photo
-                    <input type="file" name="file" accept="image/*" id="image-input" onChange={this.onFormChange} />
+                    <input
+                      type="file"
+                      name="file"
+                      accept="image/*"
+                      id="image-input"
+                      onChange={this.onFormChange}
+                    />
                   </div>
                 </div>
               </div>
@@ -165,12 +171,13 @@ export class Profile extends Component {
                       <h2>{profile.username}</h2>
                     </div>
                     <div className="col-md-6">
-                      <button
+                      <FollowButton isProfileOwner={isProfileOwner} isOwner={isOwner} />
+                      {/* <button
                         type="submit"
                         className={isProfileOwner ? 'hidden' : 'profile-edit-btn btn-primary'}
                       >
                         {isOwner}
-                      </button>
+                      </button> */}
                     </div>
                   </div>
 
@@ -279,13 +286,13 @@ export class Profile extends Component {
             <Tab eventKey="articles" title="Articles">
               <UserArticlesView />
             </Tab>
-            { username && isProfileOwner ? (
+            {username && isProfileOwner ? (
               <Tab eventKey="reports" title="Reports">
                 <UserReports />
               </Tab>
-            ) : ''
-            }
-
+            ) : (
+              ''
+            )}
           </Tabs>
         </div>
       );
