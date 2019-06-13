@@ -118,7 +118,7 @@ class SignupForm extends Component {
             <div className="login">
               <p>Already have an account?</p>
               <Link className="login-text" to="/Login">
-                {' '}
+
                 Login
               </Link>
             </div>

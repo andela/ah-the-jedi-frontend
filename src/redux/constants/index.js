@@ -18,3 +18,5 @@ export const headers = (token = '') => {
 };
 export const FETCH_PROFILE = 'FETCH_PROFILE';
 export const SEARCH = 'SEARCH';
+export const FETCH_ARTICLES = 'FETCH_ARTICLES';
+export const DELETE_ARTICLE = 'DELETE_ARTICLE';

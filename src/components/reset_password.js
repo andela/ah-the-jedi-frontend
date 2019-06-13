@@ -1,8 +1,8 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
-import { Button, Checkbox, Form, Card, Icon, Image } from "semantic-ui-react";
+import { Button, Checkbox, Form, Card, Icon, Image } from 'semantic-ui-react';
 
-require("./reset_password.css");
+require('./reset_password.css');
 
 class ResetPassword extends React.Component {
   render() {
