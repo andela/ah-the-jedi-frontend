@@ -28,7 +28,7 @@ export class PasswordConfirmForm extends Component {
 
     return (
       <div className="box">
-        <Form onSubmit={onSubmit}>
+        <Form onSubmit={onSubmit} id="form">
           <Form.Group>
             <p id="error" />
             <Form.Label>Enter new password:</Form.Label>
