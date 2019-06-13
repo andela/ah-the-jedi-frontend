@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom';
 import LoggedInLinks from './LoggedInLinks';
 import LoggedOutLinks from './LoggedOutLinks';
 import { isLoggedIn } from '../../helpers';
+import { Navbar } from 'react-bootstrap';
 import '../../assets/styles/header.scss';
 
 class Header extends Component {
@@ -14,7 +15,11 @@ class Header extends Component {
      */
     const links = login.isAuthentincated || isLoggedIn() ? <LoggedInLinks /> : <LoggedOutLinks />;
     return (
-      <nav sticky="top" className="navbar navbar-expand-lg navbar-light" data-set="nav-bar-test">
+      <Navbar
+        fixed="top"
+        className="navbar navbar-expand-lg navbar-light"
+        data-set="nav-bar-test"
+      >
         <NavLink className="navbar-brand" to="/" data-set="nav-bar-brand-test">
           Authors Haven
         </NavLink>
@@ -22,7 +27,7 @@ class Header extends Component {
         <div className="collapse navbar-collapse align-rt" id="navbarSupportedContent">
           <ul className="navbar-nav ml-auto">{links}</ul>
         </div>
-      </nav>
+      </Navbar>
     );
   }
 }

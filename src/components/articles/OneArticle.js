@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {
   Image, Row, Col, Button, Popover, OverlayTrigger,
 } from 'react-bootstrap';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import parse from 'html-react-parser';
 import PropTypes from 'prop-types';
 
@@ -10,7 +10,7 @@ class OneArticle extends Component {
   render() {
     let Chevron;
     const {
-      title, description, readtime, author, image, body, handleClick,
+      title, description, readtime, author, image, body, handleClick, slug,
     } = this.props;
     const popover = (
       <Popover id="popover-basic">
@@ -48,6 +48,13 @@ class OneArticle extends Component {
             Delete Article
           </Button>
         </OverlayTrigger>
+        <br />
+        <br />
+        <Link to={`update/${slug}`}>
+          <Button variant="primary" id="update-button" size="sm">
+            Update Article
+          </Button>
+        </Link>
       </Popover>
     );
 

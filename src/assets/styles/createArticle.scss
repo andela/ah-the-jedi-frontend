@@ -1,0 +1,69 @@
+@import './variables.scss';
+.create-article-form{
+
+    width: 60%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1%;
+    align-items: flex-start;
+    margin-bottom: 5%;
+
+    .article-form{
+        box-shadow: $box-shadow;
+        padding: 30px 60px 40px 60px;
+        border-radius: 5px;
+    }
+
+    .wrapper-class{
+        box-shadow: $wrapper-box-shadow;
+        border-radius: 3px;
+    }
+
+    .editor-class{
+        border-radius: 3px;
+        padding: 1rem;
+        padding-top: 0rem;
+        min-height: 200px;
+    }
+
+    .editor-div{
+        border: red;
+        border-width: 100px;
+    }
+
+    .toolbar-class{
+        border-radius: 3px;
+    }
+
+    .tags{
+        margin-top: 10px;
+    }
+
+    .submit-btn {
+        background: $blue !important;
+        margin-top: 30px;
+        font-weight: bold;
+      }
+
+      .img-btn {
+          margin-left: 5px;
+      }
+
+      .form-image{
+        max-width: 100%;
+        display: flex;
+        justify-content: space-between;
+        max-height: 400px;
+        margin: auto;
+        margin-bottom: 10px;
+      }
+
+      .hidden {
+        display: none;
+      }
+      .show {
+        display: block;
+      }
+  }
+  

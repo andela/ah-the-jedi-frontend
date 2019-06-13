@@ -4,11 +4,13 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Header from './layout/Header';
 import routes from '../routes';
+import '../assets/styles/app.scss';
+import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 
 class App extends Component {
   render() {
     return (
-      <div>
+      <div className="app">
         <ToastContainer />
         <Router>
           <Fragment>
