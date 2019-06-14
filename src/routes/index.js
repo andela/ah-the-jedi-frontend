@@ -1,5 +1,5 @@
 import HomeView from '../components/home/Home';
-import ReadArticle from '../components/articles/readArticle';
+import ReadArticle from '../components/articles/ReadArticle';
 import SignUpView from '../views/SignUpView';
 import LoginView from '../views/LoginView';
 import Notfound from '../components/layout/Notfound';
