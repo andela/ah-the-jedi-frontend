@@ -5,9 +5,13 @@ import moxios from 'moxios';
 import { resetPassword } from '../src/redux/actions/resetPasswordAction';
 import { RESET_PASSWORD } from '../src/redux/constants';
 
+/*
+ * Defines tests for reset password action:
+ * Test for successful and unsuccessful dispatch of action
+ */
 const mockData = {
   resetPasswordData: {
-    email: 'catherinechepkurui95@gmail.com',
+    email: 'test678@gmail.com',
   },
   response: {
     data: {
@@ -42,7 +46,7 @@ describe('reset password actions', () => {
   });
 
   it('tests for successful password reset action', () => {
-    const { response } = mockData;
+    const { response, resetPasswordData } = mockData;
     moxios.wait(() => {
       const request = moxios.requests.mostRecent();
       request.respondWith({
@@ -59,7 +63,7 @@ describe('reset password actions', () => {
     const store = mockStore({});
 
     return store
-      .dispatch(resetPassword())
+      .dispatch(resetPassword(resetPasswordData.email))
       .then(() => {
         expect(store.getActions()[1].type).toEqual(expectedActions.type);
       })
@@ -74,11 +78,11 @@ describe('reset password actions', () => {
       const request = moxios.requests.mostRecent();
       request.respondWith({
         status: 404,
-        response: error.response.data,
+        response: error.response.data.message,
       });
     });
 
-    const expectedActions = { type: `${RESET_PASSWORD}_FAILURE`, error: error.response.data };
+    const expectedActions = { type: `${RESET_PASSWORD}_FAILURE`, error: error.response.data.message };
 
     const store = mockStore({});
 
