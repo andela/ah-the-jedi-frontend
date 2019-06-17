@@ -112,3 +112,18 @@
   font-style: bold !important;
   font-weight: 900;
 }
+
+.socialShare{
+  margin-top: 1%;
+  text-align: right;
+
+  &-twitter, &-facebook {
+    height: 5%;
+    width: 5%;
+    margin-right: 1%;
+  }
+  &-mail {
+    height: 4.7%;
+    width: 4.7%;
+  }
+}
