@@ -5,6 +5,7 @@ export const RESET_PASSWORD = 'RESET_PASSWORD';
 export const PASSWORD_CONFIRM = 'PASSWORD_CONFIRM';
 export const CREATE_COMMENT = 'CREATE_COMMENT';
 export const FETCH_COMMENT = 'FETCH_COMMENT';
+export const APP_URL = 'https://ah-the-jedi-frontend-staging.herokuapp.com/';
 
 export const headers = (token = '') => {
   const config = {

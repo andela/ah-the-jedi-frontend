@@ -5,6 +5,7 @@ import {
 import { NavLink, Link } from 'react-router-dom';
 import parse from 'html-react-parser';
 import PropTypes from 'prop-types';
+import { twitterUrl, facebookUrl, mailUrl } from '../../helpers/socialShare';
 import Comments from '../comments/Comments';
 
 class OneArticle extends Component {
@@ -42,7 +43,7 @@ class OneArticle extends Component {
                 </Col>
               </div>
             </Popover>
-)}
+          )}
           rootClose
         >
           <Button variant="outline-danger" size="sm">
@@ -122,6 +123,11 @@ class OneArticle extends Component {
                   {parse(body)}
                 </Col>
               </Row>
+              <div className="socialShare">
+                <a href={facebookUrl(slug, title)} target="_blank"><img className="socialShare-facebook" src="https://res.cloudinary.com/do8v0ew77/image/upload/v1560759898/icons8-facebook-filled-100_c16cmr.png" title="Facebook" alt="facebook" /></a>
+                <a href={twitterUrl(slug, title)} target="_blank"><img className="socialShare-twitter" src="https://res.cloudinary.com/do8v0ew77/image/upload/v1560759897/icons8-twitter-circled-filled-100_osi7la.png" title="Twitter" alt="twitter" /></a>
+                <a href={mailUrl(slug, title)} target="_blank"><img className="socialShare-mail" src="https://res.cloudinary.com/do8v0ew77/image/upload/v1560759963/email_k2vitj.png" title="Mail" alt="mail" /></a>
+              </div>
             </div>
           </div>
           <hr />
@@ -141,6 +147,7 @@ OneArticle.propTypes = {
   image: PropTypes.string.isRequired,
   body: PropTypes.string.isRequired,
   handleClick: PropTypes.func.isRequired,
+  slug: PropTypes.string.isRequired,
 };
 
 export default OneArticle;
