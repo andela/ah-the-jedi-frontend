@@ -11,6 +11,8 @@ import ProfileView from '../components/profiles/Profile';
 import SearchView from '../views/SearchView';
 import CreateArticleView from '../views/CreateArticleView';
 import UpdateArticleView from '../views/UpdateArticleView';
+import SearchArticleByTag from '../components/articles/SearchArticleByTag';
+
 
 const routes = [
   {
@@ -58,6 +60,11 @@ const routes = [
     path: '/search',
     component: SearchView,
     id: 'search',
+  },
+  {
+    path: '/search-by-tag',
+    component: SearchArticleByTag,
+    id: 'searchByTag',
   },
   {
     path: '/articles/:slug',

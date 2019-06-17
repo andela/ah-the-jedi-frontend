@@ -128,20 +128,20 @@ class SearchView extends Component {
 }
 
 /*
-   * mapDispatchToProps:
-   * gets the response from dispatch
-   * and maps it to props
-   */
+ * mapDispatchToProps:
+ * gets the response from dispatch
+ * and maps it to props
+ */
 
 const mapDispatchToProps = () => ({
   search,
 });
 
 /*
-   * mapStateToProps:
-   * gets the state of the application
-   * and maps it to props
-   */
+ * mapStateToProps:
+ * gets the state of the application
+ * and maps it to props
+ */
 const mapStateToProps = state => ({
   response: state.SearchReducer,
 });

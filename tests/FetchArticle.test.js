@@ -28,6 +28,7 @@ describe('should mount ReadArticle and OneArticle', () => {
       slug: 'test-slug',
       body: 'imaginative long body ',
       match: { params: { username: 'testUser' } },
+      tags: ['tets', 'here'],
     };
 
     const wrapper = mount(
@@ -63,6 +64,7 @@ describe('should mount ReadArticle and OneArticle', () => {
       slug: 'test-slug',
       body: 'imaginative long body ',
       match: { params: { username: 'testUser' } },
+      tags: ['tets', 'here'],
     };
 
     const wrapper = mount(

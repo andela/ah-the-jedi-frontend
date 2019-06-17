@@ -125,10 +125,11 @@ SearchComponent.propTypes = {
   onClickArticles: PropTypes.func.isRequired,
   onClickAuthors: PropTypes.func.isRequired,
   onClickTags: PropTypes.func.isRequired,
-  searchState: PropTypes.shape({}).isRequired,
+  searchState: PropTypes.shape({}),
 };
 
 SearchComponent.defaultProps = {
   values: [{}],
+  searchState: {},
 };
 export default SearchComponent;

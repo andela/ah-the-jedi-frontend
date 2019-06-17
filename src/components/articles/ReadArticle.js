@@ -74,6 +74,7 @@ class ReadArticle extends Component {
           body={data.body}
           handleClick={this.handleClick}
           bookmarks={bookmarkedArticles}
+          tags={data.tag_list}
         />
       );
     }

@@ -1,7 +1,6 @@
 import thunk from 'redux-thunk';
 import moxios from 'moxios';
 import configureMockStore from 'redux-mock-store';
-import { createBrowserHistory } from 'history';
 import { CREATE_COMMENT, BASE_URL } from '../src/redux/constants';
 import { createComment, createThreadComment } from '../src/redux/actions/CreateCommentAction';
 import { initialState } from '../src/redux/reducers/createCommentReducer';
@@ -42,7 +41,6 @@ describe('unit tests for create comment actions', () => {
 
   it('returns CREATE_COMMENT_SUCCESS on successful thread post', () => {
     store.dispatch(createThreadComment(comment));
-
     expect(store.getActions()[0].type).toEqual(`${CREATE_COMMENT}`);
   });
 

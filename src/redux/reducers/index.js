@@ -11,6 +11,7 @@ import UpdateArticleReducer from './UpdateArticleReducer';
 import CreateCommentReducer from './createCommentReducer';
 import FetchCommentsReducer from './FetchCommentsReducer';
 import bookmarkReducer from './bookmarkReducer';
+import TagsReducer from './TagsReducer';
 
 const rootReducer = combineReducers({
   signup: SignUpReducer,
@@ -25,6 +26,7 @@ const rootReducer = combineReducers({
   create_comment: CreateCommentReducer,
   FetchCommentsReducer,
   bookmarkReducer,
+  TagsReducer,
 });
 
 export default rootReducer;
