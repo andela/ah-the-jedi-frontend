@@ -29,9 +29,13 @@ export const isLoggedIn = () => {
 
 export const isTokenExpired = () => {
   const userObject = localStorage.getItem('user');
-  const { token } = JSON.parse(userObject);
-  const decoded = jwtDecode(token);
-  const expiryDate = decoded.exp * 1000;
+  let expiryDate;
+  if (userObject) {
+    const { token } = JSON.parse(userObject);
+    const decoded = jwtDecode(token);
+    expiryDate = decoded.exp * 1000;
+  }
+
   if (new Date(expiryDate) < new Date()) {
     return true;
   }

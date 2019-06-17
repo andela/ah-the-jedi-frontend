@@ -2,7 +2,7 @@ import React from 'react';
 import { mount } from 'enzyme';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import store from '../src/redux/store/';
+import store from '../src/redux/store';
 import Header from '../src/components/layout/Header';
 import LoggedInLinks from '../src/components/layout/LoggedInLinks';
 import LoggedOutLinks from '../src/components/layout/LoggedOutLinks';
@@ -45,7 +45,9 @@ describe('Unit tests for Header Component', () => {
   });
 
   it('Should render nav-bar-logout-test', () => {
-    const wrapper = findByAttribute(component, 'nav-bar-logout-test');
+    const wrapper = findByAttribute(component, 'nav-bar-logout-test').first();
     expect(wrapper.exists()).toBe(true);
+
+    wrapper.simulate('click');
   });
 });

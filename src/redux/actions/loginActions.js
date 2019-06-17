@@ -4,7 +4,6 @@ import { successToast, errorToast } from '../../helpers';
 
 import { socialAction } from './SignUpAction';
 
-
 /*
  *Defines the action types for successful login
  */
@@ -36,7 +35,6 @@ export const logout = () => ({
   type: `${LOGIN_USER}_LOGOUT`,
 });
 
-
 /*
  *Defines the loginUser actions and dispatches the right
  *action for either success >>loginSuccess() or
@@ -44,7 +42,7 @@ export const logout = () => ({
  */
 export const loginUser = (data, history) => dispatch => {
   dispatch({ type: LOGIN_USER });
-  axios
+  return axios
     .post(`${BASE_URL}/users/login/`, data)
     .then(response => {
       dispatch(loginSuccess(response.data));
@@ -65,7 +63,7 @@ export const loginUser = (data, history) => dispatch => {
 export const UserSocialLogin = (data, history) => dispatch => {
   dispatch({ type: LOGIN_USER });
   dispatch({ type: SIGNUP_USER });
-  axios
+  return axios
     .post(`${BASE_URL}/users/social/login/`, data)
     .then(response => {
       dispatch(loginSuccessSocial(response.data));
@@ -83,6 +81,4 @@ export const UserSocialLogin = (data, history) => dispatch => {
  *Defines the logout actions and dispatches the
  *logout user action
  */
-export const logoutUser = () => dispatch => {
-  dispatch(logout());
-};
+export const logoutUser = () => dispatch => dispatch(logout());
