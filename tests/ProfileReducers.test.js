@@ -19,30 +19,12 @@ describe('Unit Test for Profile reducer', () => {
     });
   });
 
-  it('test successful fetch of profile', () => {
-    const payload = {
-      profile: {
-        username: 'eric',
-        first_name: 'Abraham',
-        last_name: 'Kamau',
-        bio: 'this is a test for fetch',
-        following: false,
-      },
-    };
-    expect(profileReducer({}, { type: `${FETCH_PROFILE}_SUCCESS` }).payload).toEqual();
-  });
-
-  it('test edit profile with errors', () => {
+  it('actions types and payload are dispatched successfully', () => {
     const action = {
-      type: `${FETCH_PROFILE}_FAILURE`,
-      error: {
-        errors: 'profile with this username does not exist',
-        status: '404',
-      },
+      type: FETCH_PROFILE,
     };
     expect(profileReducer({}, action)).toEqual({
-      error: action.error,
-      isLoading: false,
+      isLoading: true,
     });
   });
 

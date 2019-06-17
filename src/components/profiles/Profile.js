@@ -13,6 +13,7 @@ import UserArticlesView from '../articles/UserArticles';
 import { fetchProfile, updateProfile } from '../../redux/actions/profileActions';
 import LoaderView from '../layout/Loader';
 
+
 /*
  * Profile Component
  *
@@ -141,7 +142,7 @@ export class Profile extends Component {
     if (!state.isLoading) {
       return (
         <div className="container emp-profile">
-          <form onSubmit={this.onSubmit}>
+          <form onSubmit={this.onSubmit} id="profile-form">
             <div className="row">
               <div className="col-md-4 mt-2">
                 <div className="profile-img">
@@ -154,7 +155,7 @@ export class Profile extends Component {
                   />
                   <div className={isProfileOwner ? 'file btn btn-lg btn-primary' : 'hidden'}>
                     Change Photo
-                    <input type="file" name="file" accept="image/*" onChange={this.onFormChange} />
+                    <input type="file" name="file" accept="image/*" id="image-input" onChange={this.onFormChange} />
                   </div>
                 </div>
               </div>
@@ -223,6 +224,7 @@ export class Profile extends Component {
                             profile.last_name,
                             last_name,
                             nameInput,
+                            'last-name',
                           )}
                         </div>
                       </div>
@@ -254,7 +256,7 @@ export class Profile extends Component {
                         <i className={isProfileOwner ? 'fa fa-pencil fa-sm mr-3' : 'hidden'} />
                       </div>
                     </div>
-                    {InlineField('bio', isProfileOwner, profile.bio, bio, bioInput)}
+                    {InlineField('bio', isProfileOwner, profile.bio, bio, bioInput, 'bio')}
                   </div>
 
                   <div className="row in-line mt-5 mb-5">
