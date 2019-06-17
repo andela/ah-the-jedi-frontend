@@ -6,12 +6,15 @@ import { connect } from 'react-redux';
 import InlineEditable from 'react-inline-editable-field';
 import moment from 'moment';
 import PropTypes from 'prop-types';
+import Popup from 'reactjs-popup';
 
 import '../../assets/styles/profile.scss';
+import { Tabs, Tab } from 'react-bootstrap';
 import FollowsView from '../follows/Follows';
 import UserArticlesView from '../articles/UserArticles';
 import { fetchProfile, updateProfile } from '../../redux/actions/profileActions';
 import LoaderView from '../layout/Loader';
+import UserReports from './UserReports';
 
 
 /*
@@ -51,9 +54,7 @@ export class Profile extends Component {
   onSubmit = e => {
     e.preventDefault();
 
-    const {
-      first_name, last_name, bio, image,
-    } = this.state;
+    const { first_name, last_name, bio, image } = this.state;
 
     const formData = new FormData();
 
@@ -88,9 +89,7 @@ export class Profile extends Component {
   }
 
   render() {
-    const {
-      isChanged: isLocalChanged, first_name, last_name, bio,
-    } = this.state;
+    const { isChanged: isLocalChanged, first_name, last_name, bio } = this.state;
 
     const {
       profile: { profile },
@@ -148,8 +147,8 @@ export class Profile extends Component {
                 <div className="profile-img">
                   <img
                     src={
-                      profile.image
-                      || 'https://res.cloudinary.com/do8v0ew77/image/upload/v1559819721/20190606111521.png'
+                      profile.image ||
+                      'https://res.cloudinary.com/do8v0ew77/image/upload/v1559819721/20190606111521.png'
                     }
                     alt=""
                   />
@@ -271,29 +270,23 @@ export class Profile extends Component {
                       </div>
                     </div>
                   </div>
-
-                  <ul className="nav nav-tabs mt-1" id="myTab" role="tablist">
-                    <li className="nav-item">
-                      <a
-                        className="nav-link bold active"
-                        id="home-tab"
-                        data-toggle="tab"
-                        href="#home"
-                        role="tab"
-                        aria-controls="home"
-                        aria-selected="true"
-                      >
-                        Articles
-                      </a>
-                    </li>
-                  </ul>
                 </div>
               </div>
               <div className="col-md-2" />
             </div>
           </form>
+          <Tabs defaultActiveKey="articles" id="uncontrolled-tab-example">
+            <Tab eventKey="articles" title="Articles">
+              <UserArticlesView />
+            </Tab>
+            { username && isProfileOwner ? (
+              <Tab eventKey="reports" title="Reports">
+                <UserReports />
+              </Tab>
+            ) : ''
+            }
 
-          <UserArticlesView />
+          </Tabs>
         </div>
       );
     }

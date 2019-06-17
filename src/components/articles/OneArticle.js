@@ -1,7 +1,7 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { Component } from 'react';
-import {
-  Image, Row, Col, Button, Popover, OverlayTrigger,
-} from 'react-bootstrap';
+import { Image, Row, Col, Button, Popover, OverlayTrigger } from 'react-bootstrap';
 import { NavLink, Link } from 'react-router-dom';
 import parse from 'html-react-parser';
 import PropTypes from 'prop-types';
@@ -14,6 +14,7 @@ class OneArticle extends Component {
     const { bookmarks } = this.props;
 
     let Chevron;
+    let ReportChevron;
     const {
       title,
       description,
@@ -25,6 +26,8 @@ class OneArticle extends Component {
       slug,
       tags,
       history,
+      id,
+      reportClick,
     } = this.props;
     const popover = (
       <Popover id="popover-basic">
@@ -72,6 +75,14 @@ class OneArticle extends Component {
       </Popover>
     );
 
+    const reportPopover = (
+      <Popover id="popover-basic">
+        <p id="report-article" onClick={() => reportClick(id)}>
+          Report Article
+        </p>
+      </Popover>
+    );
+
     /** get the username if any of logged in user and return empty of none */
     const username = localStorage.getItem('user')
       ? JSON.parse(localStorage.getItem('user')).username
@@ -85,6 +96,19 @@ class OneArticle extends Component {
       );
     } else {
       Chevron = () => '';
+    }
+
+    /** check of user is owner or article or they are not
+     * logged in to display reportiong chevron
+     * */
+    if (username === '' || username === author) {
+      ReportChevron = () => '';
+    } else {
+      ReportChevron = () => (
+        <OverlayTrigger trigger="click" placement="top" overlay={reportPopover} rootClose>
+          <span className="mdi mdi-dots-horizontal hamburger-menu" />
+        </OverlayTrigger>
+      );
     }
 
     return (
@@ -135,6 +159,7 @@ class OneArticle extends Component {
 
                 <Col sm={10} className="body-text read-one-image">
                   {parse(body)}
+                  <ReportChevron />
                 </Col>
               </Row>
               <div className="socialShare">
@@ -192,6 +217,8 @@ OneArticle.propTypes = {
   bookmarks: PropTypes.arrayOf(PropTypes.shape({})),
   history: PropTypes.shape({}),
   tags: PropTypes.arrayOf(PropTypes.string),
+  id: PropTypes.number.isRequired,
+  reportClick: PropTypes.func.isRequired,
 };
 
 OneArticle.defaultProps = {
