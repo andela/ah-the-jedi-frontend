@@ -1,0 +1,24 @@
+.myImage {
+  height: 100px;
+  width: 100px;
+}
+
+.myImage img {
+  border-radius: 50% !important;
+}
+
+.myBtnClass:hover {
+  background-color: #cb1d3a !important;
+}
+
+button .unFollow {
+  display: none;
+}
+
+.myBtnClass:hover .FollowingTitle {
+  display: none;
+}
+
+.myBtnClass:hover .unFollow {
+  display: inline;
+}

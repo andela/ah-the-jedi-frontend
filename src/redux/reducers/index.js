@@ -14,6 +14,8 @@ import bookmarkReducer from './bookmarkReducer';
 import TagsReducer from './TagsReducer';
 import ReportsReducer from './ CreateReportReducer';
 import { OptInOutReducer, NotifyStatusReducer } from './NotificationsOptInOutReducer.js';
+import followReducer from './followReducer';
+import followersReducer from './followersReducer';
 
 const rootReducer = combineReducers({
   signup: SignUpReducer,
@@ -32,6 +34,8 @@ const rootReducer = combineReducers({
   ReportsReducer,
   OptInOutReducer,
   NotifyStatusReducer,
+  followReducer,
+  followersReducer,
 });
 
 export default rootReducer;

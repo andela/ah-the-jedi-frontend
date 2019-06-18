@@ -6,16 +6,15 @@ import { connect } from 'react-redux';
 import InlineEditable from 'react-inline-editable-field';
 import moment from 'moment';
 import PropTypes from 'prop-types';
-import Popup from 'reactjs-popup';
-
-import '../../assets/styles/profile.scss';
 import { Tabs, Tab } from 'react-bootstrap';
-import FollowsView from '../follows/Follows';
 import UserArticlesView from '../articles/UserArticles';
 import { fetchProfile, updateProfile } from '../../redux/actions/profileActions';
 import LoaderView from '../layout/Loader';
 import UserReports from './UserReports';
 import FollowButton from '../follows/FollowButton';
+import FollowerList from '../follows/FollowersList';
+import FollowingList from '../follows/FollowingList';
+import '../../assets/styles/profile.scss';
 
 /*
  * Profile Component
@@ -89,6 +88,13 @@ export class Profile extends Component {
   }
 
   render() {
+    const {
+      followersReducer: {
+        followers: { followers },
+        following: { following },
+      },
+    } = this.props;
+
     const { isChanged: isLocalChanged, first_name, last_name, bio } = this.state;
 
     const {
@@ -167,17 +173,15 @@ export class Profile extends Component {
               <div className="col-md-6">
                 <div className="profile-head mt-3">
                   <div className="row">
-                    <div className="col-md-6">
+                    <div className="col-md-6 customOverflow">
                       <h2>{profile.username}</h2>
                     </div>
                     <div className="col-md-6">
-                      <FollowButton isProfileOwner={isProfileOwner} isOwner={isOwner} />
-                      {/* <button
-                        type="submit"
-                        className={isProfileOwner ? 'hidden' : 'profile-edit-btn btn-primary'}
-                      >
-                        {isOwner}
-                      </button> */}
+                      <FollowButton
+                        isProfileOwner={isProfileOwner}
+                        isOwner={isOwner}
+                        username={profile.username}
+                      />
                     </div>
                   </div>
 
@@ -254,7 +258,6 @@ export class Profile extends Component {
                       </div>
                     </div>
                   </div>
-                  <FollowsView />
 
                   <div className={isProfileOwner ? 'mt-5 in-line ' : ''}>
                     <div className="row">
@@ -287,6 +290,20 @@ export class Profile extends Component {
               <UserArticlesView />
             </Tab>
             {username && isProfileOwner ? (
+              <Tab eventKey="followers" title={`Followers (${followers || 0})`}>
+                <FollowerList />
+              </Tab>
+            ) : (
+              ''
+            )}
+            {username && isProfileOwner ? (
+              <Tab eventKey="following" title={`Following (${following || 0})`}>
+                <FollowingList />
+              </Tab>
+            ) : (
+              ''
+            )}
+            {username && isProfileOwner ? (
               <Tab eventKey="reports" title="Reports">
                 <UserReports />
               </Tab>
@@ -314,8 +331,9 @@ Profile.defaultProps = {
   profile: { profile: {} },
   history: {},
 };
-const mapStateToProps = ({ profile }) => ({
+const mapStateToProps = ({ profile, followersReducer }) => ({
   profile,
+  followersReducer,
 });
 
 const mapDispatchToProps = () => ({

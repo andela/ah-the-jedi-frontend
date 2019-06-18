@@ -65,7 +65,7 @@ describe('test renders search component', () => {
   it('renders authors search component', () => {
     const props = { author: 'cate' };
     wrapper = shallow(<AuthorsSearch {...props} />);
-    expect(wrapper.find('button')).toHaveLength(1);
+    expect(wrapper.find('Button')).toHaveLength(1);
     expect(wrapper.exists()).toEqual(true);
   });
 
