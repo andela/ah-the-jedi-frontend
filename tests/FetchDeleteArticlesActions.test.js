@@ -8,7 +8,7 @@ import {
   fetchByAuthor,
   deleteArticle,
 } from '../src/redux/actions/FetchArticlesActions';
-import { FETCH_ARTICLES, DELETE_ARTICLE } from '../src/redux/constants';
+import { FETCH_ARTICLES, DELETE_ARTICLE, ARTICLES_URL } from '../src/redux/constants';
 
 /*
  * Defines tests for search action:
@@ -49,6 +49,8 @@ const middlewares = [thunk];
 
 const mockStore = configureMockStore(middlewares);
 
+const url = ARTICLES_URL;
+
 describe('test get all articles actions', () => {
   beforeEach(() => {
     moxios.install();
@@ -76,7 +78,7 @@ describe('test get all articles actions', () => {
     const store = mockStore({});
 
     return store
-      .dispatch(fetchArticles())
+      .dispatch(fetchArticles(url))
       .then(() => {
         expect(store.getActions()[1].type).toEqual(expectedActions[1].type);
       })
@@ -102,11 +104,10 @@ describe('test get all articles actions', () => {
 
     const store = mockStore({});
 
-    return store.dispatch(fetchArticles()).catch(() => {
+    return store.dispatch(fetchArticles(url)).catch(() => {
       expect(error.response.data).toEqual(expectedActions.type);
     });
   });
-
 
   it('tests for successful get one action', () => {
     const { response } = mockData;
@@ -157,7 +158,6 @@ describe('test get all articles actions', () => {
       expect(store.getActions()[1].type).toEqual(expectedActions[1].type);
     });
   });
-
 
   it('tests for successful get author articles', () => {
     const { response } = mockData;

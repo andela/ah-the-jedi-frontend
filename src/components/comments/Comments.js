@@ -26,7 +26,6 @@ class Comments extends Component {
     const { slug } = this.props;
     const { isLoading, data } = this.props.myState;
     const comments = data.Comments;
-    console.log(comments);
 
     return (
       <div>

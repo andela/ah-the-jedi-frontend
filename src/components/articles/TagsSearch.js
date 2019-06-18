@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 import '../../assets/styles/searchComponent.scss';
 
 /*
-* Tags search Component
-* Display tags that contain keyword searched
-*@return {jsx}
-*/
+ * Tags search Component
+ * Display tags that contain keyword searched
+ *@return {jsx}
+ */
 class TagsSearch extends Component {
   render() {
     const { tag } = this.props;

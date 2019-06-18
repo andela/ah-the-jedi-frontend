@@ -60,6 +60,7 @@
   height: 400px;
   border: 1px solid $bordergray;
   margin-bottom: 20px;
+  margin: 10px;
 }
 
 .flip-box-inner {
@@ -83,11 +84,6 @@
   backface-visibility: hidden;
 }
 
-.flip-box-front {
-  background-color: $cardgray;
-  color: $black;
-}
-
 .flip-box-back {
   overflow: hidden !important;
   transform: rotateY(180deg);
@@ -95,6 +91,11 @@
 
 .home-card {
   height: 100% !important;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  margin-right: 0px !important;
+  margin-bottom: 0 !important;
+  margin-left: 0px !important;
 }
 
 .homepage-card-image {
@@ -113,11 +114,12 @@
   font-weight: 900;
 }
 
-.socialShare{
+.socialShare {
   margin-top: 1%;
   text-align: right;
 
-  &-twitter, &-facebook {
+  &-twitter,
+  &-facebook {
     height: 5%;
     width: 5%;
     margin-right: 1%;
@@ -126,4 +128,17 @@
     height: 4.7%;
     width: 4.7%;
   }
+}
+.pagination {
+  display: flex;
+  justify-content: center;
+}
+
+.page-link {
+  cursor: pointer;
+}
+
+.active-page {
+  color: white !important;
+  background-color: blue !important;
 }

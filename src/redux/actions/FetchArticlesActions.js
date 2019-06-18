@@ -2,7 +2,6 @@ import axios from 'axios';
 import { FETCH_ARTICLES, DELETE_ARTICLE, BASE_URL } from '../constants';
 import { successToast } from '../../helpers';
 
-
 /*
  *Defines the action types for successful all articles fetch
  */
@@ -64,16 +63,15 @@ export const deleteArticleFailure = error => ({
   error,
 });
 
-
 /*
  *Defines the fetchArticles actions and dispatches the right
  *action for either success
  *failure
  */
-export const fetchArticles = () => dispatch => {
+export const fetchArticles = url => dispatch => {
   dispatch({ type: FETCH_ARTICLES });
   return axios
-    .get(`${BASE_URL}/articles/`)
+    .get(url)
     .then(response => {
       dispatch(fetchSuccess(response));
     })
@@ -105,7 +103,7 @@ export const fetchOneArticle = (slug, history) => dispatch => {
  *action for either success
  *failure
  */
-export const fetchByAuthor = (author) => dispatch => {
+export const fetchByAuthor = author => dispatch => {
   dispatch({ type: FETCH_ARTICLES });
   return axios
     .get(`${BASE_URL}/article/search/?author=${author}`)
