@@ -10,6 +10,7 @@ const initialState = {
 /*
  *Defines reducer for Article bookmark component and returns the
  *state based on the action types
+
  */
 export default (state = initialState, action) => {
   switch (action.type) {
