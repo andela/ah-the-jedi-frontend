@@ -15,7 +15,7 @@ class OneArticle extends Component {
 
     let Chevron;
     const {
-      title, description, readtime, author, image, body, handleClick, slug,
+      title, description, readtime, author, image, body, handleClick, slug, tags
     } = this.props;
     const popover = (
       <Popover id="popover-basic">
@@ -156,6 +156,8 @@ class OneArticle extends Component {
               </div>
             </div>
           </div>
+          <hr />
+          {tags.map(tag => <button type="button" className="btn btn-outline-secondary tag-button">{tag}</button>)}
           <hr />
           {' '}
           <Comments slug={slug} />

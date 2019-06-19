@@ -9,19 +9,18 @@ import '../../assets/styles/searchComponent.scss';
  */
 class TagsSearch extends Component {
   render() {
-    const { tag } = this.props;
+    const { tag, onClickTags } = this.props;
     return (
-      <div>
-        <button type="button" className="btn btn-default border border-white">
-          {tag}
-        </button>
-      </div>
+      <button type="button" className="btn btn-outline-secondary tag-button" onClick={onClickTags}>
+        {tag}
+      </button>
     );
   }
 }
 
 TagsSearch.propTypes = {
   tag: PropTypes.string,
+  onClickTags: PropTypes.func.isRequired,
 };
 
 TagsSearch.defaultProps = {

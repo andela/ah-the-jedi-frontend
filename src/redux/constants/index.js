@@ -29,3 +29,4 @@ export const CREATE_ARTICLE = 'CREATE_ARTICLE';
 export const UPDATE_ARTICLE = 'UPDATE_ARTICLE';
 export const GET_ONE_ARTICLE = 'GET_ONE_ARTICLE';
 export const ARTICLES_URL = `${BASE_URL}/articles/`;
+export const GET_TAGS = 'GET_TAGS';
