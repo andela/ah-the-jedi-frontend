@@ -46,6 +46,7 @@ class ReadArticle extends Component {
     const {
       article: { isLoading },
       bookmark: { articles: bookmarkedArticles },
+      history,
     } = this.props;
 
     if (isLoading) {
@@ -75,6 +76,7 @@ class ReadArticle extends Component {
           handleClick={this.handleClick}
           bookmarks={bookmarkedArticles}
           tags={data.tag_list}
+          history={history}
         />
       );
     }

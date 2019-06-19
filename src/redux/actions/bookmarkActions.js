@@ -47,7 +47,7 @@ export const bookmarkFail = error => ({
  *failure >>bookmarkFail()
  */
 
-export const bookmarkArticle = slug => dispatch => {
+export const bookmarkArticle = (slug, history = '') => dispatch => {
   dispatch({ type: BOOKMARK });
   return axios
     .post(`${BASE_URL}/articles/${slug}/bookmark/`, null, headers(localStorage.getItem('token')))
@@ -56,7 +56,12 @@ export const bookmarkArticle = slug => dispatch => {
     })
     .catch(error => {
       dispatch(bookmarkFail(error.response.data.error));
-      errorToast(error.response.data.error);
+      if (error.response.data && error.response.data.detail) {
+        history.push('/login');
+        errorToast('Please log in to continue');
+      } else {
+        errorToast(error.response.data.error);
+      }
     });
 };
 
@@ -87,6 +92,9 @@ export const fetchBookmark = slug => dispatch => {
     .get(`${BASE_URL}/articles/${slug}/bookmark/`, headers(localStorage.getItem('token')))
     .then(response => {
       dispatch(fetchSuccess(response.data.data));
+    })
+    .catch(error => {
+      dispatch(bookmarkFail(error.response.data));
     });
 };
 
