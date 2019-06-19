@@ -7,9 +7,12 @@ import parse from 'html-react-parser';
 import PropTypes from 'prop-types';
 import { twitterUrl, facebookUrl, mailUrl } from '../../helpers/socialShare';
 import Comments from '../comments/Comments';
+import Bookmarks from './Bookmark';
 
 class OneArticle extends Component {
   render() {
+    const { bookmarks } = this.props;
+
     let Chevron;
     const {
       title, description, readtime, author, image, body, handleClick, slug,
@@ -43,7 +46,7 @@ class OneArticle extends Component {
                 </Col>
               </div>
             </Popover>
-          )}
+)}
           rootClose
         >
           <Button variant="outline-danger" size="sm">
@@ -117,16 +120,39 @@ class OneArticle extends Component {
             <br />
             <div>
               <Row>
-                <Col sm={2}>Icons here; I.e liking, bookmarking etc</Col>
+                <Col sm={2}>
+                  <Bookmarks slug={slug} bookmarks={bookmarks} />
+                </Col>
 
                 <Col sm={10} className="body-text read-one-image">
                   {parse(body)}
                 </Col>
               </Row>
               <div className="socialShare">
-                <a href={facebookUrl(slug, title)} target="_blank"><img className="socialShare-facebook" src="https://res.cloudinary.com/do8v0ew77/image/upload/v1560759898/icons8-facebook-filled-100_c16cmr.png" title="Facebook" alt="facebook" /></a>
-                <a href={twitterUrl(slug, title)} target="_blank"><img className="socialShare-twitter" src="https://res.cloudinary.com/do8v0ew77/image/upload/v1560759897/icons8-twitter-circled-filled-100_osi7la.png" title="Twitter" alt="twitter" /></a>
-                <a href={mailUrl(slug, title)} target="_blank"><img className="socialShare-mail" src="https://res.cloudinary.com/do8v0ew77/image/upload/v1560759963/email_k2vitj.png" title="Mail" alt="mail" /></a>
+                <a href={facebookUrl(slug, title)} target="_blank">
+                  <img
+                    className="socialShare-facebook"
+                    src="https://res.cloudinary.com/do8v0ew77/image/upload/v1560759898/icons8-facebook-filled-100_c16cmr.png"
+                    title="Facebook"
+                    alt="facebook"
+                  />
+                </a>
+                <a href={twitterUrl(slug, title)} target="_blank">
+                  <img
+                    className="socialShare-twitter"
+                    src="https://res.cloudinary.com/do8v0ew77/image/upload/v1560759897/icons8-twitter-circled-filled-100_osi7la.png"
+                    title="Twitter"
+                    alt="twitter"
+                  />
+                </a>
+                <a href={mailUrl(slug, title)} target="_blank">
+                  <img
+                    className="socialShare-mail"
+                    src="https://res.cloudinary.com/do8v0ew77/image/upload/v1560759963/email_k2vitj.png"
+                    title="Mail"
+                    alt="mail"
+                  />
+                </a>
               </div>
             </div>
           </div>
@@ -148,6 +174,11 @@ OneArticle.propTypes = {
   body: PropTypes.string.isRequired,
   handleClick: PropTypes.func.isRequired,
   slug: PropTypes.string.isRequired,
+  bookmarks: PropTypes.arrayOf(PropTypes.shape({})),
+};
+
+OneArticle.defaultProps = {
+  bookmarks: [{}],
 };
 
 export default OneArticle;

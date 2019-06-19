@@ -6,10 +6,11 @@ import passwordConfirmReducer from './passwordConfirmReducer';
 import profile from './profileReducer';
 import SearchReducer from './SearchReducer';
 import FetchArticlesReducer from './FetchArticlesReducer';
-import CreateArticleReducer from '../reducers/CreateArticleReducer';
-import UpdateArticleReducer from '../reducers/UpdateArticleReducer';
+import CreateArticleReducer from './CreateArticleReducer';
+import UpdateArticleReducer from './UpdateArticleReducer';
 import CreateCommentReducer from './createCommentReducer';
 import FetchCommentsReducer from './FetchCommentsReducer';
+import bookmarkReducer from './bookmarkReducer';
 
 const rootReducer = combineReducers({
   signup: SignUpReducer,
@@ -23,6 +24,7 @@ const rootReducer = combineReducers({
   updateArticle: UpdateArticleReducer,
   create_comment: CreateCommentReducer,
   FetchCommentsReducer,
+  bookmarkReducer,
 });
 
 export default rootReducer;

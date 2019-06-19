@@ -114,6 +114,12 @@
   font-weight: 900;
 }
 
+.bookmarks {
+  font-size: 2.5em;
+  color: black;
+  margin-left: 1.2em;
+}
+
 .socialShare {
   margin-top: 1%;
   text-align: right;
@@ -141,4 +147,12 @@
 .active-page {
   color: white !important;
   background-color: blue !important;
+}
+
+@media (max-width: 767px) {
+  .bookmarks {
+    font-size: 2em;
+    color: black;
+    margin-left: 0.1em;
+  }
 }
