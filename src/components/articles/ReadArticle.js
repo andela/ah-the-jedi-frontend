@@ -10,6 +10,7 @@ import { Loader } from '../layout/Loader';
 import OneArticle from './OneArticle';
 import { isTokenExpired, errorToast } from '../../helpers';
 import { fetchOneArticle, deleteArticle } from '../../redux/actions/FetchArticlesActions';
+import { fetchBookmark } from '../../redux/actions/bookmarkActions';
 
 class ReadArticle extends Component {
   componentWillMount() {
@@ -18,8 +19,9 @@ class ReadArticle extends Component {
         params: { slug },
       },
     } = this.props;
-    const { history, fetchOneArticle: fetchsSingle } = this.props;
+    const { history, fetchOneArticle: fetchsSingle, fetchBookmark: bookmarkFetch } = this.props;
     fetchsSingle(slug, history);
+    bookmarkFetch(slug);
   }
 
   handleClick = e => {
@@ -43,6 +45,7 @@ class ReadArticle extends Component {
     let article;
     const {
       article: { isLoading },
+      bookmark: { articles: bookmarkedArticles },
     } = this.props;
 
     if (isLoading) {
@@ -70,6 +73,7 @@ class ReadArticle extends Component {
           slug={data.slug}
           body={data.body}
           handleClick={this.handleClick}
+          bookmarks={bookmarkedArticles}
         />
       );
     }
@@ -79,11 +83,13 @@ class ReadArticle extends Component {
 
 export const mapStateToProps = state => ({
   article: state.FetchArticlesReducer,
+  bookmark: state.bookmarkReducer,
 });
 
 export const mapDispatchToProps = () => ({
   fetchOneArticle,
   deleteArticle,
+  fetchBookmark,
 });
 
 ReadArticle.propTypes = {

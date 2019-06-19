@@ -42,7 +42,7 @@ describe('unit tests for create comment actions', () => {
 
   it('returns CREATE_COMMENT_SUCCESS on successful thread post', () => {
     store.dispatch(createThreadComment(comment));
-    console.log(store.getActions());
+
     expect(store.getActions()[0].type).toEqual(`${CREATE_COMMENT}`);
   });
 

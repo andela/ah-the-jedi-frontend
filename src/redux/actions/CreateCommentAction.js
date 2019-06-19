@@ -19,7 +19,7 @@ export const createComment = (data, slug, history) => async dispatch => {
     .then(response => {
       dispatch(createCommentSuccess(response.data));
       successToast('Comment posted successfully');
-      console.log(slug);
+
       dispatch(fetchCommentsAction(slug, history));
     })
     .catch(error => {
