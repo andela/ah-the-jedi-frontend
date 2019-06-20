@@ -33,13 +33,14 @@ export class Bookmark extends Component {
       unbookmarkArticle: articleUnbookmark,
       setBookmarked: bookmarkSet,
       slug,
+      history,
     } = this.props;
 
     isBookmarked
       ? bookmarkSet(slug)
       : this.setState(prevState => ({ ...prevState, isClicked: !prevState.isClicked }));
 
-    isClicked || isBookmarked ? articleUnbookmark(slug) : articleBookmark(slug);
+    isClicked || isBookmarked ? articleUnbookmark(slug) : articleBookmark(slug, history);
   };
 
   render() {
@@ -51,7 +52,7 @@ export class Bookmark extends Component {
       bookmarked: { error },
     } = this.props;
 
-    const articleSlugs = bookmarks.map(bmk => bmk.slug);
+    const articleSlugs = (bookmarks.length > 0 && bookmarks.map(bmk => bmk.slug)) || [];
 
     const bookmarkExists = articleSlugs.includes(slug);
 
@@ -83,12 +84,14 @@ Bookmark.propTypes = {
   slug: PropTypes.string,
   bookmarks: PropTypes.arrayOf(PropTypes.shape({})),
   bookmarked: PropTypes.shape({}),
+  history: PropTypes.shape({}),
 };
 
 Bookmark.defaultProps = {
   slug: '',
   bookmarks: [{}],
   bookmarked: { error: '' },
+  history: {},
 };
 
 const mapStateToProps = state => ({

@@ -15,7 +15,16 @@ class OneArticle extends Component {
 
     let Chevron;
     const {
-      title, description, readtime, author, image, body, handleClick, slug, tags
+      title,
+      description,
+      readtime,
+      author,
+      image,
+      body,
+      handleClick,
+      slug,
+      tags,
+      history,
     } = this.props;
     const popover = (
       <Popover id="popover-basic">
@@ -121,7 +130,7 @@ class OneArticle extends Component {
             <div>
               <Row>
                 <Col sm={2}>
-                  <Bookmarks slug={slug} bookmarks={bookmarks} />
+                  <Bookmarks slug={slug} bookmarks={bookmarks} history={history} />
                 </Col>
 
                 <Col sm={10} className="body-text read-one-image">
@@ -157,7 +166,11 @@ class OneArticle extends Component {
             </div>
           </div>
           <hr />
-          {tags.map(tag => <button type="button" className="btn btn-outline-secondary tag-button">{tag}</button>)}
+          {tags.map(tag => (
+            <button type="button" className="btn btn-outline-secondary tag-button">
+              {tag}
+            </button>
+          ))}
           <hr />
           {' '}
           <Comments slug={slug} />
@@ -177,10 +190,14 @@ OneArticle.propTypes = {
   handleClick: PropTypes.func.isRequired,
   slug: PropTypes.string.isRequired,
   bookmarks: PropTypes.arrayOf(PropTypes.shape({})),
+  history: PropTypes.shape({}),
+  tags: PropTypes.arrayOf(PropTypes.string),
 };
 
 OneArticle.defaultProps = {
   bookmarks: [{}],
+  history: {},
+  tags: [''],
 };
 
 export default OneArticle;
