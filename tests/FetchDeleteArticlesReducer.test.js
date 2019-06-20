@@ -1,6 +1,8 @@
 import expect from 'expect';
 import FetchArticlesReducer from '../src/redux/reducers/FetchArticlesReducer';
-import { FETCH_ARTICLES, DELETE_ARTICLE } from '../src/redux/constants';
+import {
+ FETCH_ARTICLES, DELETE_ARTICLE, LIKE_ARTICLE, DISLIKE_ARTICLE
+} from '../src/redux/constants';
 
 /*
  * Defines the search reducer tests:
@@ -135,6 +137,42 @@ describe('test delete article reducer', () => {
   it('should handle get author article request failure', () => {
     const failureAction = {
       type: `${DELETE_ARTICLE}_FAILURE`,
+      error: mockData.error,
+    };
+    const state = FetchArticlesReducer({}, failureAction);
+    expect(state.isLoading).toEqual(false);
+  });
+
+  it('should handle like article success request', () => {
+    const successAction = {
+      type: `${LIKE_ARTICLE}_SUCCESS`,
+      response: mockData.response,
+    };
+    const state = FetchArticlesReducer({}, successAction);
+    expect(state.isLoading).toEqual(false);
+  });
+
+  it('should handle like article request failure', () => {
+    const failureAction = {
+      type: `${LIKE_ARTICLE}_FAILURE`,
+      error: mockData.error,
+    };
+    const state = FetchArticlesReducer({}, failureAction);
+    expect(state.isLoading).toEqual(false);
+  });
+
+  it('should handle dislike article success request', () => {
+    const successAction = {
+      type: `${DISLIKE_ARTICLE}_SUCCESS`,
+      response: mockData.response,
+    };
+    const state = FetchArticlesReducer({}, successAction);
+    expect(state.isLoading).toEqual(false);
+  });
+
+  it('should handle dislike article request failure', () => {
+    const failureAction = {
+      type: `${DISLIKE_ARTICLE}_FAILURE`,
       error: mockData.error,
     };
     const state = FetchArticlesReducer({}, failureAction);

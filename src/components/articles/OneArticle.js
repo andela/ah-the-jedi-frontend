@@ -1,7 +1,9 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { Component } from 'react';
-import { Image, Row, Col, Button, Popover, OverlayTrigger } from 'react-bootstrap';
+import {
+  Image, Row, Col, Button, Popover, OverlayTrigger,
+} from 'react-bootstrap';
 import { NavLink, Link } from 'react-router-dom';
 import parse from 'html-react-parser';
 import PropTypes from 'prop-types';
@@ -28,6 +30,10 @@ class OneArticle extends Component {
       history,
       id,
       reportClick,
+      numVoteDown,
+      numVoteUp,
+      likeClicked,
+      dislikeClicked,
     } = this.props;
     const popover = (
       <Popover id="popover-basic">
@@ -155,8 +161,17 @@ class OneArticle extends Component {
               <Row>
                 <Col sm={2}>
                   <Bookmarks slug={slug} bookmarks={bookmarks} history={history} />
+                  <div className="likeDislike">
+                    <div className="likeDislike-row">
+                      <span className="mdi mdi-thumb-up-outline thumbSize" onClick={likeClicked} />
+                      <h5 className="likeDislike-text">{numVoteUp}</h5>
+                    </div>
+                    <div className="likeDislike-row">
+                      <span className="mdi mdi-thumb-down-outline thumbSize" onClick={dislikeClicked} />
+                      <h5 className="likeDislike-text">{numVoteDown}</h5>
+                    </div>
+                  </div>
                 </Col>
-
                 <Col sm={10} className="body-text read-one-image">
                   {parse(body)}
                   <ReportChevron />
@@ -219,6 +234,10 @@ OneArticle.propTypes = {
   tags: PropTypes.arrayOf(PropTypes.string),
   id: PropTypes.number.isRequired,
   reportClick: PropTypes.func.isRequired,
+  numVoteDown: PropTypes.number.isRequired,
+  numVoteUp: PropTypes.number.isRequired,
+  likeClicked: PropTypes.func.isRequired,
+  dislikeClicked: PropTypes.func.isRequired,
 };
 
 OneArticle.defaultProps = {
