@@ -57,6 +57,7 @@ export const bookmarkArticle = (slug, history = '') => dispatch => {
     .catch(error => {
       dispatch(bookmarkFail(error.response.data.error));
       if (error.response.data && error.response.data.detail) {
+        localStorage.clear();
         history.push('/login');
         errorToast('Please log in to continue');
       } else {
