@@ -3,7 +3,11 @@ import React from 'react';
 import { NavLink, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { logoutUser } from '../../redux/actions/loginActions';
+import OptInOutView from '../../views/OptInOutView';
 import '../../assets/styles/header.scss';
+import {
+  Popover, OverlayTrigger, Dropdown, Col, Row,
+} from 'react-bootstrap';
 
 /*
  *@return {jsx} to display in the Header component
@@ -17,6 +21,43 @@ class LoggedInLinks extends React.Component {
   };
 
   render() {
+    const popover = (
+      <Popover id="popover-basic">
+        <OverlayTrigger
+          trigger="click"
+          placement="bottom"
+          overlay={(
+            <Popover id="popover-basic">
+              <div className="container">
+                <Col>
+                  <Row>
+                    <div className="col text-left">
+                      <strong>Choose what you want to opt in/out of</strong>
+                      <hr />
+                      <OptInOutView />
+                    </div>
+                  </Row>
+                </Col>
+              </div>
+            </Popover>
+)}
+          rootClose
+        >
+          <Dropdown.Toggle variant=" focus-click" id="dropdown-basic">
+            Notification Settings
+          </Dropdown.Toggle>
+        </OverlayTrigger>
+        <br />
+        <br />
+      </Popover>
+    );
+
+    const OptInOut = () => (
+      <OverlayTrigger trigger="click" placement="bottom" overlay={popover}>
+        <i className="fa fa-bell-o nav-link" aria-hidden="true" />
+      </OverlayTrigger>
+    );
+
     const username = localStorage.getItem('user')
       ? JSON.parse(localStorage.getItem('user')).username
       : '';
@@ -26,6 +67,7 @@ class LoggedInLinks extends React.Component {
     return (
       <div className="row">
         <div className="col-md-10 navbar-custom">
+          <OptInOut />
           <NavLink className="nav-link" to="/search">
             <span role="img" aria-label="search">
               &#128269;

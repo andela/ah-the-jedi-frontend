@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { fetchCommentsAction } from './FetchCommentsAction';
 import { BASE_URL, CREATE_COMMENT } from '../constants';
-import { successToast, errorToast } from '../../helpers';
+import { successToast } from '../../helpers';
 
 /*
  *Defines the create_comment actions and dispatches the right
