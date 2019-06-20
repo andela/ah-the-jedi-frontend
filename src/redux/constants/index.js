@@ -36,3 +36,4 @@ export const DELETE_REPORT = 'DELETE_REPORT';
 export const UPDATE_REPORT = 'UPDATE_REPORT';
 export const LIKE_ARTICLE = 'LIKE_ARTICLE';
 export const DISLIKE_ARTICLE = 'DISLIKE_ARTICLE';
+export const OPTINOUT = 'OPTINOUT';
