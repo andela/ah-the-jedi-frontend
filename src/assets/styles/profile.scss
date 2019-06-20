@@ -59,6 +59,11 @@
   padding: 2%;
   font-weight: 600;
   cursor: pointer;
+  outline: transparent;
+}
+
+button {
+  outline: transparent !important;
 }
 
 .proile-rating {
@@ -177,4 +182,8 @@
 .save-btn {
   display: flex;
   justify-content: center;
+}
+
+.customOverflow {
+  overflow: hidden !important;
 }

@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { Button } from 'react-bootstrap';
 import '../../assets/styles/searchComponent.scss';
 import avatar from '../../assets/images/avatar.png';
 
 /*
-* Authors search Component
-* Display authors whose names contain keyword searched.
-*@return {jsx}
-*/
+ * Authors search Component
+ * Display authors whose names contain keyword searched.
+ *@return {jsx}
+ */
 class AuthorsSearch extends Component {
   render() {
     const { author } = this.props;
@@ -23,9 +23,9 @@ class AuthorsSearch extends Component {
           </a>
         </div>
         <div className="col-md-3">
-          <button type="button" className="btn btn-outline-primary">
-            <Link to={`/@${author}`}>Follow</Link>
-          </button>
+          <a href={`@${author}`}>
+            <Button variant="outline-primary">View Profile</Button>
+          </a>
         </div>
       </div>
     );

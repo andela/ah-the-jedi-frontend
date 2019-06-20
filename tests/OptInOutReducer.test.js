@@ -1,8 +1,9 @@
 import expect from 'expect';
-import { OptInOutReducer, NotifyStatusReducer } from '../src/redux/reducers/NotificationsOptinOutReducer';
 import {
-  OPTINOUT
-} from '../src/redux/constants';
+  OptInOutReducer,
+  NotifyStatusReducer,
+} from '../src/redux/reducers/NotificationsOptinOutReducer';
+import { OPTINOUT } from '../src/redux/constants';
 
 /*
  * Defines the change notifications reducer tests:
@@ -10,10 +11,10 @@ import {
 
 const mockData = {
   response: {
-      subscriptions: {
-        email: true,
-        app: true,
-      },
+    subscriptions: {
+      email: true,
+      app: true,
+    },
     status: 200,
   },
   error: {
@@ -49,7 +50,6 @@ describe('test fetch notification settings reducer', () => {
     expect(state.isLoading).toEqual(false);
   });
 });
-
 
 describe('test change notification settings reducer', () => {
   it('should return default state', () => {

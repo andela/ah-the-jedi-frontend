@@ -22,6 +22,11 @@ describe('Tests for Profile Component with field update', () => {
         },
         isLoading: false,
       },
+      followersReducer: {
+        followers: { followers: 0 },
+
+        following: { following: 0 },
+      },
       fetchProfile: jest.fn(),
       updateProfile: jest.fn(),
       onFormChange: jest.fn(),
