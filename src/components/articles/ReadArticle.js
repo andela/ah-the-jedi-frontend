@@ -12,9 +12,11 @@ import { connect } from 'react-redux';
 import { Loader } from '../layout/Loader';
 import OneArticle from './OneArticle';
 import { isTokenExpired, errorToast } from '../../helpers';
-import { fetchOneArticle, deleteArticle } from '../../redux/actions/FetchArticlesActions';
 import { fetchBookmark } from '../../redux/actions/bookmarkActions';
 import { createReport } from '../../redux/actions/ArticlesReportsActions';
+import {
+  fetchOneArticle, deleteArticle, likeArticle, dislikeArticle,
+} from '../../redux/actions/FetchArticlesActions';
 
 class ReadArticle extends Component {
   state = {
@@ -97,6 +99,18 @@ class ReadArticle extends Component {
     });
   }
 
+  likeClicked = () => {
+    const { history } = this.props;
+    const { data } = this.props.article.article.data;
+    this.props.likeArticle(data.slug, history);
+  }
+
+  dislikeClicked = () => {
+    const { history } = this.props;
+    const { data } = this.props.article.article.data;
+    this.props.dislikeArticle(data.slug, history);
+  }
+
   render() {
     let article;
     const {
@@ -136,6 +150,10 @@ class ReadArticle extends Component {
           history={history}
           reportClick={this.reportClick}
           reason={this.state.reason}
+          numVoteDown={data.num_vote_down}
+          numVoteUp={data.num_vote_up}
+          likeClicked={this.likeClicked}
+          dislikeClicked={this.dislikeClicked}
         />
       );
     }
@@ -143,9 +161,10 @@ class ReadArticle extends Component {
   }
 }
 
-export const mapStateToProps = state => ({
+export const mapStateToProps = (state, { FetchArticlesReducer }) => ({
   article: state.FetchArticlesReducer,
   bookmark: state.bookmarkReducer,
+  FetchArticlesReducer,
 });
 
 export const mapDispatchToProps = () => ({
@@ -153,6 +172,8 @@ export const mapDispatchToProps = () => ({
   deleteArticle,
   fetchBookmark,
   createReport,
+  likeArticle,
+  dislikeArticle,
 });
 
 ReadArticle.propTypes = {

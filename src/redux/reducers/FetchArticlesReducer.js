@@ -1,10 +1,13 @@
-import { FETCH_ARTICLES, DELETE_ARTICLE } from '../constants';
+import {
+ FETCH_ARTICLES, DELETE_ARTICLE, LIKE_ARTICLE, DISLIKE_ARTICLE, 
+} from '../constants';
 
 const initialState = {
   isLoading: false,
   articles: {},
   error: {},
   article: {},
+  likeDislike: {},
 };
 
 const FetchArticlesReducer = (state = initialState, action) => {
@@ -67,6 +70,30 @@ const FetchArticlesReducer = (state = initialState, action) => {
         ...state,
         isLoading: false,
         authorArticleDelete: action.error,
+      };
+    case `${LIKE_ARTICLE}_SUCCESS`:
+      return {
+        ...state,
+        isLoading: false,
+        likeDislike: action.response,
+      };
+    case `${LIKE_ARTICLE}_FAILURE`:
+      return {
+        ...state,
+        isLoading: false,
+        likeDislike: action.error,
+      };
+    case `${DISLIKE_ARTICLE}_SUCCESS`:
+      return {
+        ...state,
+        isLoading: false,
+        likeDislike: action.response,
+      };
+    case `${DISLIKE_ARTICLE}_FAILURE`:
+      return {
+        ...state,
+        isLoading: false,
+        likeDislike: action.error,
       };
 
     default:

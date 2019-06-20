@@ -5,6 +5,7 @@ const initialState = {
   data: {},
   error: {},
   isLoading: false,
+  
 };
 
 /*

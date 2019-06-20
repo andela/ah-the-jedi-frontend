@@ -135,6 +135,25 @@
     width: 4.7%;
   }
 }
+
+.likeDislike{
+  display: flex;
+  flex-direction: column;
+  margin-left: 2em !important;
+  &-row {
+    display: flex;
+    flex-direction: row;
+  }
+  &-text{
+    margin-top: 13px;
+    margin-left: 13px;
+  }
+}
+
+.thumbSize{
+  font-size: 30px;
+}
+
 .pagination {
   display: flex;
   justify-content: center;
