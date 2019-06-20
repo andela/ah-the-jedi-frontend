@@ -12,6 +12,7 @@ import CreateCommentReducer from './createCommentReducer';
 import FetchCommentsReducer from './FetchCommentsReducer';
 import bookmarkReducer from './bookmarkReducer';
 import TagsReducer from './TagsReducer';
+import ReportsReducer from './ CreateReportReducer';
 
 const rootReducer = combineReducers({
   signup: SignUpReducer,
@@ -27,6 +28,7 @@ const rootReducer = combineReducers({
   FetchCommentsReducer,
   bookmarkReducer,
   TagsReducer,
+  ReportsReducer,
 });
 
 export default rootReducer;

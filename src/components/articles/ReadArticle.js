@@ -4,6 +4,9 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import moment from 'moment';
+import { confirmAlert } from 'react-confirm-alert';
+import 'react-confirm-alert/src/react-confirm-alert.css';
+import { Form } from 'react-bootstrap';
 import '../../assets/styles/articles.scss';
 import { connect } from 'react-redux';
 import { Loader } from '../layout/Loader';
@@ -11,8 +14,13 @@ import OneArticle from './OneArticle';
 import { isTokenExpired, errorToast } from '../../helpers';
 import { fetchOneArticle, deleteArticle } from '../../redux/actions/FetchArticlesActions';
 import { fetchBookmark } from '../../redux/actions/bookmarkActions';
+import { createReport } from '../../redux/actions/ArticlesReportsActions';
 
 class ReadArticle extends Component {
+  state = {
+    reason: '',
+  }
+
   componentWillMount() {
     const {
       match: {
@@ -22,6 +30,23 @@ class ReadArticle extends Component {
     const { history, fetchOneArticle: fetchsSingle, fetchBookmark: bookmarkFetch } = this.props;
     fetchsSingle(slug, history);
     bookmarkFetch(slug);
+  }
+
+  handleChange=(e) => {
+    this.setState({
+      [e.target.id]: e.target.value,
+    });
+  }
+
+  /** check if textarea
+   * is empty else try
+   * to report */
+  handleReport=(reason, id) => {
+    if (reason.trim()) {
+      this.props.createReport({ reason, article: id });
+    } else {
+      errorToast('Please enter reason for reporting this article');
+    }
   }
 
   handleClick = e => {
@@ -40,6 +65,37 @@ class ReadArticle extends Component {
       errorToast('Session has expired please login again');
     }
   };
+
+  /*
+ * Defines the reporting article function
+ *takes id of article as param
+ *reason is gotten from the local state
+ *uses the react-confirm-alert library for
+ *displaying the alert
+ */
+  reportClick = (id) => {
+    confirmAlert({
+      title: 'Report Article',
+      message:
+  <Form>
+    <Form.Group>
+      <Form.Control as="textarea" rows="3" id="reason" onChange={this.handleChange} placeholder="Enter reason for reporting this article" />
+    </Form.Group>
+    <Form.Text className="text-muted" id="report-error">
+
+    </Form.Text>
+  </Form>,
+      buttons: [
+        {
+          label: 'Report',
+          onClick: () => this.handleReport(this.state.reason.toLowerCase(), id),
+        },
+        {
+          label: 'Cancel',
+        },
+      ],
+    });
+  }
 
   render() {
     let article;
@@ -72,11 +128,14 @@ class ReadArticle extends Component {
           author={data.author.username}
           image={data.image}
           slug={data.slug}
+          id={data.id}
           body={data.body}
           handleClick={this.handleClick}
           bookmarks={bookmarkedArticles}
           tags={data.tag_list}
           history={history}
+          reportClick={this.reportClick}
+          reason={this.state.reason}
         />
       );
     }
@@ -93,6 +152,7 @@ export const mapDispatchToProps = () => ({
   fetchOneArticle,
   deleteArticle,
   fetchBookmark,
+  createReport,
 });
 
 ReadArticle.propTypes = {

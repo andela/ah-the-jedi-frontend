@@ -30,3 +30,7 @@ export const UPDATE_ARTICLE = 'UPDATE_ARTICLE';
 export const GET_ONE_ARTICLE = 'GET_ONE_ARTICLE';
 export const ARTICLES_URL = `${BASE_URL}/articles/`;
 export const GET_TAGS = 'GET_TAGS';
+export const CREATE_REPORT = 'CREATE_REPORT';
+export const FETCH_REPORT = 'FETCH_REPORT';
+export const DELETE_REPORT = 'DELETE_REPORT';
+export const UPDATE_REPORT = 'UPDATE_REPORT';

@@ -161,3 +161,36 @@
   overflow: auto;
   white-space: nowrap;
 }
+#report-article {
+  cursor: pointer;
+}
+
+.react-confirm-alert-button-group > button:first-child {
+  border: 1px solid $delete-red;
+  background-color: white;
+  color: black;
+}
+
+.react-confirm-alert-button-group > button:first-child:hover {
+  background: #f44336;
+  color: white;
+}
+
+.react-confirm-alert-button-group > button:nth-child(2) {
+  border: 1px solid $blue;
+  background-color: white !important;
+  color: black;
+}
+
+.react-confirm-alert-button-group > button:nth-child(2):hover {
+  background: $blue !important;
+  color: white;
+}
+
+#report-error {
+  color: red !important;
+}
+
+.reason-title {
+  text-decoration: underline;
+}
