@@ -1,4 +1,5 @@
 @import './variables.scss';
+
 .navbar-light {
   background-color: white !important;
   box-shadow: $box-shadow;
@@ -134,4 +135,43 @@ input:checked + .slider:before {
 }
 .opt-choice p {
   margin-right: 10px;
+}
+.notification-message {
+  min-height: 3.5em;
+  border-bottom: 1px solid $linegray !important;
+  word-wrap: break-word !important;
+  white-space: normal !important;
+}
+
+.notification-link {
+  text-decoration: none !important;
+  color: $black;
+  margin: 1em 0 !important;
+}
+
+.notification-dropdown {
+  max-width: 320px;
+  max-height: 60vh !important;
+  overflow: scroll;
+}
+
+.popover-header {
+  text-align: center !important;
+}
+
+.opt-menu {
+  min-height: 10em !important;
+}
+
+.date-span {
+  font-size: 11px;
+}
+
+.notify {
+  font-size: 4px !important;
+  color: $shadeblue !important;
+}
+
+.notify-count {
+  font-size: 8.5px !important;
 }

@@ -13,9 +13,10 @@ import FetchCommentsReducer from './FetchCommentsReducer';
 import bookmarkReducer from './bookmarkReducer';
 import TagsReducer from './TagsReducer';
 import ReportsReducer from './ CreateReportReducer';
-import { OptInOutReducer, NotifyStatusReducer } from './NotificationsOptInOutReducer.js';
 import followReducer from './followReducer';
 import followersReducer from './followersReducer';
+import { OptInOutReducer, NotifyStatusReducer } from './NotificationsOptInOutReducer';
+import notifications from './notificationReducer';
 
 const rootReducer = combineReducers({
   signup: SignUpReducer,
@@ -36,6 +37,7 @@ const rootReducer = combineReducers({
   NotifyStatusReducer,
   followReducer,
   followersReducer,
+  notifications,
 });
 
 export default rootReducer;

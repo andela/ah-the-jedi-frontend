@@ -2,27 +2,53 @@
 import React from 'react';
 import { NavLink, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { logoutUser } from '../../redux/actions/loginActions';
-import OptInOutView from '../../views/OptInOutView';
-import '../../assets/styles/header.scss';
 import {
   Popover, OverlayTrigger, Dropdown, Col, Row,
 } from 'react-bootstrap';
+import PropTypes from 'prop-types';
+
+import { logoutUser } from '../../redux/actions/loginActions';
+import {
+  fetchAllNotifications,
+  fetchUnreadNotifications,
+} from '../../redux/actions/notificationActions';
+import OptInOutView from '../../views/OptInOutView';
+import NotificationView from '../notifications/Notifications';
+import '../../assets/styles/header.scss';
 
 /*
  *@return {jsx} to display in the Header component
  *for navigation links when user is logged in
  */
 class LoggedInLinks extends React.Component {
+  componentDidMount() {
+    const {
+      fetchAllNotifications: fetchAll,
+      fetchUnreadNotifications: fectchUnread,
+      history,
+    } = this.props;
+
+    fetchAll(history);
+    fectchUnread(history);
+  }
+
   handleLogout = () => {
     localStorage.clear();
-    const { logoutUser } = this.props;
-    logoutUser();
+    const { logoutUser: userLogout } = this.props;
+    userLogout();
   };
 
   render() {
+    const {
+      notifications: { notifications, unread },
+    } = this.props;
+
     const popover = (
-      <Popover id="popover-basic">
+      <Popover id="popover-basic" title="Notifications">
+        <Dropdown className={typeof notifications === 'string' ? '' : 'notification-dropdown'}>
+          <NotificationView notifications={notifications} />
+        </Dropdown>
+
         <OverlayTrigger
           trigger="click"
           placement="bottom"
@@ -47,14 +73,16 @@ class LoggedInLinks extends React.Component {
             Notification Settings
           </Dropdown.Toggle>
         </OverlayTrigger>
-        <br />
-        <br />
       </Popover>
     );
 
     const OptInOut = () => (
       <OverlayTrigger trigger="click" placement="bottom" overlay={popover}>
-        <i className="fa fa-bell-o nav-link" aria-hidden="true" />
+        <i className="fa fa-bell-o nav-link ml-4" aria-hidden="true">
+          <span className="badge badge-primary badge-pill notify-count">
+            {typeof notifications !== 'string' && unread.length}
+          </span>
+        </i>
       </OverlayTrigger>
     );
 
@@ -67,12 +95,12 @@ class LoggedInLinks extends React.Component {
     return (
       <div className="row">
         <div className="col-md-10 navbar-custom">
-          <OptInOut />
           <NavLink className="nav-link" to="/search">
             <span role="img" aria-label="search">
               &#128269;
             </span>
           </NavLink>
+          <OptInOut className="mr-5 ml-5" />
           <a
             className="nav-link dropdown-toggle"
             href="#"
@@ -114,13 +142,29 @@ class LoggedInLinks extends React.Component {
   }
 }
 
+LoggedInLinks.propTypes = {
+  logoutUser: PropTypes.func.isRequired,
+  fetchAllNotifications: PropTypes.func.isRequired,
+  fetchUnreadNotifications: PropTypes.func.isRequired,
+  notifications: PropTypes.shape({}),
+  history: PropTypes.shape({}),
+};
+
+LoggedInLinks.defaultProps = {
+  history: {},
+  notifications: {},
+};
+
 const mapStateToProps = state => ({
   login: state.loginUser,
   error: state.LoginReducer.error,
+  notifications: state.notifications,
 });
 
 const mapDispatchToProps = () => ({
   logoutUser,
+  fetchAllNotifications,
+  fetchUnreadNotifications,
 });
 
 export default connect(
