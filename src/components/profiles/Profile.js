@@ -14,6 +14,7 @@ import UserReports from './UserReports';
 import FollowButton from '../follows/FollowButton';
 import FollowerList from '../follows/FollowersList';
 import FollowingList from '../follows/FollowingList';
+import BookmarkedArticles from '../articles/BookmarkedArticles';
 import '../../assets/styles/profile.scss';
 
 /*
@@ -306,6 +307,13 @@ export class Profile extends Component {
             {username && isProfileOwner ? (
               <Tab eventKey="reports" title="Reports">
                 <UserReports />
+              </Tab>
+            ) : (
+              ''
+            )}
+            {username && isProfileOwner ? (
+              <Tab eventKey="bookmarked" title="Bookmarked">
+                <BookmarkedArticles />
               </Tab>
             ) : (
               ''

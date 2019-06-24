@@ -10,6 +10,7 @@ import PropTypes from 'prop-types';
 import { twitterUrl, facebookUrl, mailUrl } from '../../helpers/socialShare';
 import Comments from '../comments/Comments';
 import Bookmarks from './Bookmark';
+import '../../assets/styles/articles.scss';
 
 class OneArticle extends Component {
   render() {
@@ -34,6 +35,7 @@ class OneArticle extends Component {
       numVoteUp,
       likeClicked,
       dislikeClicked,
+      read_count: readCount,
     } = this.props;
     const popover = (
       <Popover id="popover-basic">
@@ -125,7 +127,7 @@ class OneArticle extends Component {
             <div className="pull-right user-view-one">
               <NavLink to={`/@${author}`}>
                 <span id="user-name">{author}</span>
-                <Button variant="primary" size="lg" className="profile-btn">
+                <Button variant="primary" size="lg" className="profile-btn ">
                   {author.substring(0, 2)}
                 </Button>
               </NavLink>
@@ -143,14 +145,19 @@ class OneArticle extends Component {
           </Row>
           <Row>
             <Col sm={12}>
-              <span className="mdi mdi-clock-outline mr-5">
-                {readtime}
-                read
-              </span>
-              <span className="mdi mdi-eye-outline md-18"> 5</span>
-              <br />
-              <br />
-              <p className="description-text">{description}</p>
+              <div className="main">
+                <span className="mdi mdi-clock-outline mr-3">
+                  &nbsp;
+                  {readtime}
+                  &nbsp;
+                  read
+                </span>
+                <span className="mdi mdi-eye-outline md-18">
+                  &nbsp;
+                  {readCount}
+                </span>
+              </div>
+              <p className="description-text mt-2">{description}</p>
             </Col>
           </Row>
           <div className="container">
@@ -238,6 +245,7 @@ OneArticle.propTypes = {
   numVoteUp: PropTypes.number.isRequired,
   likeClicked: PropTypes.func.isRequired,
   dislikeClicked: PropTypes.func.isRequired,
+  read_count: PropTypes.number.isRequired,
 };
 
 OneArticle.defaultProps = {
