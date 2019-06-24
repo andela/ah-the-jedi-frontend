@@ -213,3 +213,15 @@
 .reason-title {
   text-decoration: underline;
 }
+
+#main {
+  display: -webkit-flex;
+  -webkit-align-items: center;
+  display: flex;
+  align-items: center;
+}
+
+#main span {
+   -webkit-flex: 1;
+   flex: 1;
+}

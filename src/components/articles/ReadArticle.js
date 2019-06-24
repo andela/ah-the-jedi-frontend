@@ -15,13 +15,16 @@ import { isTokenExpired, errorToast } from '../../helpers';
 import { fetchBookmark } from '../../redux/actions/bookmarkActions';
 import { createReport } from '../../redux/actions/ArticlesReportsActions';
 import {
-  fetchOneArticle, deleteArticle, likeArticle, dislikeArticle,
+  fetchOneArticle,
+  deleteArticle,
+  likeArticle,
+  dislikeArticle,
 } from '../../redux/actions/FetchArticlesActions';
 
 class ReadArticle extends Component {
   state = {
     reason: '',
-  }
+  };
 
   componentWillMount() {
     const {
@@ -34,22 +37,22 @@ class ReadArticle extends Component {
     bookmarkFetch(slug);
   }
 
-  handleChange=(e) => {
+  handleChange = e => {
     this.setState({
       [e.target.id]: e.target.value,
     });
-  }
+  };
 
   /** check if textarea
    * is empty else try
    * to report */
-  handleReport=(reason, id) => {
+  handleReport = (reason, id) => {
     if (reason.trim()) {
       this.props.createReport({ reason, article: id });
     } else {
       errorToast('Please enter reason for reporting this article');
     }
-  }
+  };
 
   handleClick = e => {
     e.preventDefault();
@@ -69,24 +72,29 @@ class ReadArticle extends Component {
   };
 
   /*
- * Defines the reporting article function
- *takes id of article as param
- *reason is gotten from the local state
- *uses the react-confirm-alert library for
- *displaying the alert
- */
-  reportClick = (id) => {
+   * Defines the reporting article function
+   *takes id of article as param
+   *reason is gotten from the local state
+   *uses the react-confirm-alert library for
+   *displaying the alert
+   */
+  reportClick = id => {
     confirmAlert({
       title: 'Report Article',
-      message:
-  <Form>
-    <Form.Group>
-      <Form.Control as="textarea" rows="3" id="reason" onChange={this.handleChange} placeholder="Enter reason for reporting this article" />
-    </Form.Group>
-    <Form.Text className="text-muted" id="report-error">
-
-    </Form.Text>
-  </Form>,
+      message: (
+        <Form>
+          <Form.Group>
+            <Form.Control
+              as="textarea"
+              rows="3"
+              id="reason"
+              onChange={this.handleChange}
+              placeholder="Enter reason for reporting this article"
+            />
+          </Form.Group>
+          <Form.Text className="text-muted" id="report-error"></Form.Text>
+        </Form>
+      ),
       buttons: [
         {
           label: 'Report',
@@ -97,19 +105,19 @@ class ReadArticle extends Component {
         },
       ],
     });
-  }
+  };
 
   likeClicked = () => {
     const { history } = this.props;
     const { data } = this.props.article.article.data;
     this.props.likeArticle(data.slug, history);
-  }
+  };
 
   dislikeClicked = () => {
     const { history } = this.props;
     const { data } = this.props.article.article.data;
     this.props.dislikeArticle(data.slug, history);
-  }
+  };
 
   render() {
     let article;
@@ -127,9 +135,9 @@ class ReadArticle extends Component {
         </div>
       );
     } else if (
-      this.props.article
-      && this.props.article.article
-      && this.props.article.article.data
+      this.props.article &&
+      this.props.article.article &&
+      this.props.article.article.data
     ) {
       const { data } = this.props.article.article.data;
 
@@ -144,6 +152,7 @@ class ReadArticle extends Component {
           slug={data.slug}
           id={data.id}
           body={data.body}
+          read_count={data.read_count}
           handleClick={this.handleClick}
           bookmarks={bookmarkedArticles}
           tags={data.tag_list}
